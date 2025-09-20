@@ -38,8 +38,8 @@ const TOGGLE_ITEMS = [
     { label: 'Pre Paid Electricity Meter', key: 'prePaidElectricMeter' },
     { label: 'Pre Paid Gas Meter', key: 'prePaidGasMeter' },
     { label: 'Water Meter Reading', key: 'waterMeter' },
-    { label: 'Smoke Alarm', key: 'smokeAlarm' },
-    { label: 'CO Alarm', key: 'coAlarm' },
+    { label: 'Smoke Alarms', key: 'smokeAlarm' },
+    { label: 'CO Alarms', key: 'coAlarm' },
     { label: 'Heating System', key: 'heatingSystem' },
 ];
 
@@ -245,14 +245,14 @@ const EditProperty = ({ navigation, route }) => {
         };
 
         const fieldDefaults = {
-            frontSideAspects: { walls: 'Fair', windows: 'Fair', lawn_drive_way: 'Fair', doors: 'Fair' },
-            entranceHalls: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair' },
-            livingRooms: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' },
-            kitchens: { walls: 'Fair', units: 'Fair', appliances: 'Fair', doors: 'Fair', floor: 'Fair', ceiling: 'Fair' },
+            frontSideAspects: { walls: 'Fair', windows: 'Fair', lawn_drive_way: 'Fair', doors: 'Fair', roof_guttering: 'Fair' , hedges : 'Fair' },
+            entranceHalls: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair' ,sockets_switches :"Fair"},
+            livingRooms: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', sockets_switches: "Fair" },
+            kitchens: { walls: 'Fair', units: 'Fair', appliances: 'Fair', doors: 'Fair', floor: 'Fair', ceiling: 'Fair', sockets_switches: "Fair" },
             rearGardens: { wall_fence: 'Fair', lawn: 'Fair', plants: 'Fair', structures: 'Fair' },
-            landings: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair' },
-            bedrooms: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' },
-            bathrooms: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', fixtures: 'Fair', bath_shower_set: 'Fair' },
+            landings: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair' , sockets_switches : 'Fair'},
+            bedrooms: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', sockets_switches: "Fair" },
+            bathrooms: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', fixtures: 'Fair', bath_shower_set: 'Fair', sockets_switches: "Fair" },
         };
 
         const newRoomSections = {
@@ -405,9 +405,9 @@ const EditProperty = ({ navigation, route }) => {
     const addRoom = (type) => {
         dispatch(AlertMiddleware.showSuccess(`${type} Added Successfully`));
         const fieldDefaults = {
-            livingRoom: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' },
-            bedroom: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' },
-            bathroom: { walls: 'Fair', ceiliceilingngs: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', fixtures: 'Fair', bath_shower_set: 'Fair' },
+            livingRoom: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', sockets_switches: "Fair" },
+            bedroom: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', sockets_switches: "Fair" },
+            bathroom: { walls: 'Fair', ceiliceilingngs: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', fixtures: 'Fair', bath_shower_set: 'Fair', sockets_switches: "Fair" },
         };
 
         const pluralMap = {
@@ -577,14 +577,14 @@ const EditProperty = ({ navigation, route }) => {
             Object.entries(roomSections).forEach(([sectionKey, rooms]) => {
                 rooms.forEach((room) => {
                     const fieldMappings = {
-                        frontSideAspects: ['walls', 'windows', 'lawn_drive_way', 'doors'],
-                        entranceHalls: ['walls', 'windows', 'ceiling', 'floor', 'doors'],
-                        livingRooms: ['walls', 'ceiling', 'windows', 'floor', 'doors'],
-                        kitchens: ['walls', 'units', 'appliances', 'doors', 'floor', 'ceiling'],
+                        frontSideAspects: ['walls', 'windows', 'lawn_drive_way', 'doors', "roof_guttering" , "hedges"],
+                        entranceHalls: ['walls', 'windows', 'ceiling', 'floor', 'doors' , 'sockets_switches'],
+                        livingRooms: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'sockets_switches'],
+                        kitchens: ['walls', 'units', 'appliances', 'doors', 'floor', 'ceiling', 'sockets_switches'],
                         rearGardens: ['wall_fence', 'lawn', 'plants', 'structures'],
-                        landings: ['walls', 'windows', 'ceiling', 'floor', 'doors'],
-                        bedrooms: ['walls', 'ceiling', 'windows', 'floor', 'doors'],
-                        bathrooms: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'fixtures', 'bath_shower_set'],
+                        landings: ['walls', 'windows', 'ceiling', 'floor', 'doors' , 'sockets_switches'],
+                        bedrooms: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'sockets_switches'],
+                        bathrooms: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'fixtures', 'bath_shower_set', 'sockets_switches'],
                     };
 
                     const detail = {
@@ -751,18 +751,18 @@ const EditProperty = ({ navigation, route }) => {
     };
 
     const openGallery = async () => {
-        const singleImageFeatures = ['prePaidElectricMeter', 'prePaidGasMeter', 'waterMeter', 'smokeAlarm', 'coAlarm'];
-        const selectionLimit = currentImageType === 'main' || singleImageFeatures.includes(currentImageType) ? 1 : 4;
-
+        const singleImageFeatures = ['prePaidElectricMeter', 'prePaidGasMeter', 'waterMeter', 'coAlarm'];
+        const selectionLimit = currentImageType === 'main' || singleImageFeatures.includes(currentImageType) ? 1 : currentImageType === 'smokeAlarm' ? 2 : 6;
+      
         launchImageLibrary(
-            {
-                mediaType: 'photo',
-                selectionLimit,
-                includeExtra: true,
-            },
-            handleImageUpload
+          {
+            mediaType: 'photo',
+            selectionLimit,
+            includeExtra: true,
+          },
+          handleImageUpload
         );
-    };
+      };
 
     const validateImage = (asset) => {
         const validFormats = ['image/jpeg', 'image/png'];
@@ -820,103 +820,103 @@ const EditProperty = ({ navigation, route }) => {
 
     const handleImageUpload = async (response) => {
         if (response.didCancel || response.errorCode) return;
-
+      
         try {
-            const maxMainImages = 1;
-            const maxFeatureImages = ['prePaidElectricMeter', 'prePaidGasMeter', 'waterMeter', 'smokeAlarm', 'coAlarm'].includes(currentImageType) ? 1 : 1;
-            const maxRoomImages = 5;
-
-            let currentImageCount = 0;
-            if (currentImageType === 'main') {
-                currentImageCount = images.main.length;
-                if (currentImageCount >= maxMainImages) {
-                    Alert.alert('Limit Reached', 'Only one main picture is allowed.');
-                    return;
-                }
-            } else if (currentImageType === 'room') {
-                const pluralMap = {
-                    frontSideAspect: 'frontSideAspects',
-                    hall: 'entranceHalls',
-                    livingRoom: 'livingRooms',
-                    kitchen: 'kitchens',
-                    garden: 'rearGardens',
-                    landing: 'landings',
-                    bedroom: 'bedrooms',
-                    bathroom: 'bathrooms',
-                };
-                const room = roomSections[pluralMap[currentRoomType]]?.find((r) => r.id === currentRoomId);
-                currentImageCount = room?.images.length || 0;
-                if (currentImageCount >= maxRoomImages) {
-                    Alert.alert('Limit Reached', `Maximum five images allowed for ${room.name}.`);
-                    return;
-                }
-            } else if (TOGGLE_ITEMS.some((item) => item.key === currentImageType)) {
-                currentImageCount = images.features[currentImageType]?.length || 0;
-                if (currentImageCount >= maxFeatureImages) {
-                    Alert.alert(
-                        'Limit Reached',
-                        `Only one image allowed for ${TOGGLE_ITEMS.find((item) => item.key === currentImageType).label}.`
-                    );
-                    return;
-                }
+          const maxMainImages = 1;
+          const maxFeatureImages = currentImageType === 'smokeAlarm' ? 2 : 1; // Allow 2 images for smokeAlarm
+          const maxRoomImages = 6;
+      
+          let currentImageCount = 0;
+          if (currentImageType === 'main') {
+            currentImageCount = images.main.length;
+            if (currentImageCount >= maxMainImages) {
+              Alert.alert('Limit Reached', 'Only one main picture is allowed.');
+              return;
             }
-
-            let allowedImages = response.assets;
-            if (currentImageType === 'main') {
-                allowedImages = response.assets.slice(0, maxMainImages - currentImageCount);
-            } else if (currentImageType === 'room') {
-                allowedImages = response.assets.slice(0, maxRoomImages - currentImageCount);
-            } else if (TOGGLE_ITEMS.some((item) => item.key === currentImageType)) {
-                allowedImages = response.assets.slice(0, maxFeatureImages - currentImageCount);
+          } else if (currentImageType === 'room') {
+            const pluralMap = {
+              frontSideAspect: 'frontSideAspects',
+              hall: 'entranceHalls',
+              livingRoom: 'livingRooms',
+              kitchen: 'kitchens',
+              garden: 'rearGardens',
+              landing: 'landings',
+              bedroom: 'bedrooms',
+              bathroom: 'bathrooms',
+            };
+            const room = roomSections[pluralMap[currentRoomType]]?.find((r) => r.id === currentRoomId);
+            currentImageCount = room?.images.length || 0;
+            if (currentImageCount >= maxRoomImages) {
+              Alert.alert('Limit Reached', `Maximum five images allowed for ${room.name}.`);
+              return;
             }
-
-            if (allowedImages.length === 0) return;
-
-            const uploadedUrls = await uploadImages(allowedImages, token, dispatch);
-
-            if (currentImageType === 'main') {
-                setImages((prev) => ({ ...prev, main: [...prev.main, ...uploadedUrls] }));
-            } else if (currentImageType === 'room') {
-                const pluralMap = {
-                    frontSideAspect: 'frontSideAspects',
-                    hall: 'entranceHalls',
-                    livingRoom: 'livingRooms',
-                    kitchen: 'kitchens',
-                    garden: 'rearGardens',
-                    landing: 'landings',
-                    bedroom: 'bedrooms',
-                    bathroom: 'bathrooms',
-                };
-                setRoomSections((prev) => ({
-                    ...prev,
-                    [pluralMap[currentRoomType]]: prev[pluralMap[currentRoomType]].map((room) =>
-                        room.id === currentRoomId ? { ...room, images: [...room.images, ...uploadedUrls] } : room
-                    ),
-                }));
-            } else {
-                setImages((prev) => ({
-                    ...prev,
-                    features: {
-                        ...prev.features,
-                        [currentImageType]: [...(prev.features[currentImageType] || []), ...uploadedUrls],
-                    },
-                }));
+          } else if (TOGGLE_ITEMS.some((item) => item.key === currentImageType)) {
+            currentImageCount = images.features[currentImageType]?.length || 0;
+            if (currentImageCount >= maxFeatureImages) {
+              Alert.alert(
+                'Limit Reached',
+                `Maximum ${maxFeatureImages} image${maxFeatureImages > 1 ? 's' : ''} allowed for ${
+                  TOGGLE_ITEMS.find((item) => item.key === currentImageType).label
+                }.`
+              );
+              return;
             }
-
-            if (response.assets.length > allowedImages.length) {
-                Alert.alert(
-                    'Partial Upload',
-                    `Only ${allowedImages.length} image(s) were uploaded due to the ${currentImageType === 'main' ||
-                        ['prePaidElectricMeter', 'prePaidGasMeter', 'waterMeter', 'smokeAlarm', 'coAlarm'].includes(currentImageType)
-                        ? '1-image'
-                        : '3-image'
-                    } limit.`
-                );
-            }
+          }
+      
+          let allowedImages = response.assets;
+          if (currentImageType === 'main') {
+            allowedImages = response.assets.slice(0, maxMainImages - currentImageCount);
+          } else if (currentImageType === 'room') {
+            allowedImages = response.assets.slice(0, maxRoomImages - currentImageCount);
+          } else if (TOGGLE_ITEMS.some((item) => item.key === currentImageType)) {
+            allowedImages = response.assets.slice(0, maxFeatureImages - currentImageCount);
+          }
+      
+          if (allowedImages.length === 0) return;
+      
+          const uploadedUrls = await uploadImages(allowedImages, token, dispatch);
+      
+          if (currentImageType === 'main') {
+            setImages((prev) => ({ ...prev, main: [...prev.main, ...uploadedUrls] }));
+          } else if (currentImageType === 'room') {
+            const pluralMap = {
+              frontSideAspect: 'frontSideAspects',
+              hall: 'entranceHalls',
+              livingRoom: 'livingRooms',
+              kitchen: 'kitchens',
+              garden: 'rearGardens',
+              landing: 'landings',
+              bedroom: 'bedrooms',
+              bathroom: 'bathrooms',
+            };
+            setRoomSections((prev) => ({
+              ...prev,
+              [pluralMap[currentRoomType]]: prev[pluralMap[currentRoomType]].map((room) =>
+                room.id === currentRoomId ? { ...room, images: [...room.images, ...uploadedUrls] } : room
+              ),
+            }));
+          } else {
+            setImages((prev) => ({
+              ...prev,
+              features: {
+                ...prev.features,
+                [currentImageType]: [...(prev.features[currentImageType] || []), ...uploadedUrls],
+              },
+            }));
+          }
+      
+          if (response.assets.length > allowedImages.length) {
+            Alert.alert(
+              'Partial Upload',
+              `Only ${allowedImages.length} image${allowedImages.length > 1 ? 's' : ''} were uploaded due to the ${
+                currentImageType === 'main' || currentImageType !== 'smokeAlarm' ? '1-image' : '2-image'
+              } limit.`
+            );
+          }
         } catch (error) {
-            Alert.alert('Upload Failed', error.message || 'Failed to upload images. Please try again.');
+          Alert.alert('Upload Failed', error.message || 'Failed to upload images. Please try again.');
         }
-    };
+      };
 
     const debounceToggle = useCallback(
         (key, value) => {
@@ -1078,95 +1078,148 @@ const EditProperty = ({ navigation, route }) => {
 
     const renderToggleSection = (label, key) => (
         <View style={styles.toggleContainer}>
-            <View style={styles.toggleHeader}>
-                <Text style={styles.toggleLabel}>{label}</Text>
-                <View style={styles.toggleGroup}>
-                    {['Yes', 'No'].map((option) => (
-                        <TouchableOpacity
-                            key={option}
-                            style={[
-                                styles.toggleButton,
-                                formData[key] === (option === 'Yes') && styles.selectedToggle,
-                                formErrors[key] && styles.errorBorder,
-                            ]}
-                            onPress={() => debounceToggle(key, option)}
-                        >
-                            <Text
-                                style={[
-                                    styles.toggleText,
-                                    formData[key] === (option === 'Yes') && styles.selectedToggleText,
-                                ]}
-                            >
-                                {option}
-                            </Text>
-                        </TouchableOpacity>
-                    ))}
-                </View>
+          <View style={styles.toggleHeader}>
+            <Text style={styles.toggleLabel}>{label}</Text>
+            <View style={styles.toggleGroup}>
+              {['Yes', 'No'].map((option) => (
+                <TouchableOpacity
+                  key={option}
+                  style={[
+                    styles.toggleButton,
+                    formData[key] === (option === 'Yes') && styles.selectedToggle,
+                    formErrors[key] && styles.errorBorder,
+                  ]}
+                  onPress={() => debounceToggle(key, option)}
+                >
+                  <Text
+                    style={[
+                      styles.toggleText,
+                      formData[key] === (option === 'Yes') && styles.selectedToggleText,
+                    ]}
+                  >
+                    {option}
+                  </Text>
+                </TouchableOpacity>
+              ))}
             </View>
-            <View style={styles.meterImageContainer}>
-                <Text style={styles.imageUploadLabel}>Upload {label}</Text>
-                <FlatList
-                    horizontal
-                    data={images.features[key]}
-                    keyExtractor={(uri, index) => `${key}_${index}_${uri.replace(/[^a-zA-Z0-9]/g, '')}`}
-                    renderItem={({ item: uri, index }) => (
-                        <View style={styles.imageContainer}>
-                            <Image source={{ uri }} style={styles.meterImagePreview} resizeMode="contain" />
-                            <TouchableOpacity
-                                style={styles.cancelIcon}
-                                onPress={() => handleRemoveImage(key, index)}
-                            >
-                                <VectorIconComponent
-                                    name="closecircle"
-                                    size={20}
-                                    color={AppStyles.colorSet.appRed}
-                                    type={ICON_TYPES.AntDesign}
-                                />
-                            </TouchableOpacity>
-                        </View>
-                    )}
-                    ListEmptyComponent={() => (
+          </View>
+          <View style={styles.meterImageContainer}>
+            <Text style={styles.imageUploadLabel}>Upload {label}</Text>
+            {key === 'smokeAlarm' ? (
+              <View style={styles.smokeAlarmImageContainer}>
+                {['Front', 'Back'].map((position, index) => (
+                  <View key={`${key}_${position}`} style={styles.smokeAlarmImageSlot}>
+                    <Text style={styles.smokeAlarmLabel}>{position}</Text>
+                    {images.features[key][index] ? (
+                      <View style={styles.imageContainer}>
+                        <Image
+                          source={{ uri: images.features[key][index] }}
+                          style={styles.meterImagePreview}
+                          resizeMode="contain"
+                        />
                         <TouchableOpacity
-                            style={[styles.meterImageButton, formErrors[`${key}Image`] && styles.imageError]}
-                            onPress={() => handleShowAlert(key)}
+                          style={styles.cancelIcon}
+                          onPress={() => handleRemoveImage(key, index)}
                         >
-                            <VectorIconComponent
-                                name="camera"
-                                size={32}
-                                color={AppStyles.colorSet.appPrimaryColor}
-                                type={ICON_TYPES.FontAwesome}
-                            />
+                          <VectorIconComponent
+                            name="closecircle"
+                            size={20}
+                            color={AppStyles.colorSet.appRed}
+                            type={ICON_TYPES.AntDesign}
+                          />
                         </TouchableOpacity>
+                      </View>
+                    ) : (
+                      <TouchableOpacity
+                        style={[styles.meterImageButton, formErrors[`${key}Image`] && styles.imageError]}
+                        onPress={() => handleShowAlert(key)}
+                      >
+                        <VectorIconComponent
+                          name="camera"
+                          size={32}
+                          color={formErrors[`${key}Image`] ? AppStyles.colorSet.appRed : AppStyles.colorSet.appPrimaryColor}
+                          type={ICON_TYPES.FontAwesome}
+                        />
+                      </TouchableOpacity>
                     )}
-                    ListFooterComponent={() => (
-                        images.features[key].length < 1 ? (
-                            <TouchableOpacity style={styles.uploadButton} onPress={() => handleShowAlert(key)}>
-                                <VectorIconComponent
-                                    name="camera"
-                                    size={24}
-                                    color={AppStyles.colorSet.appPrimaryColor}
-                                    type={ICON_TYPES.FontAwesome}
-                                />
-                                <Text style={styles.imageCountText}>{images.features[key].length}/1</Text>
-                            </TouchableOpacity>
-                        ) : null
-                    )}
-                />
-                {formErrors[`${key}Image`] && <Text style={styles.errorText}>{formErrors[`${key}Image`]}</Text>}
-            </View>
+                  </View>
+                ))}
+                {images.features[key].length < 2 && (
+                  <TouchableOpacity style={styles.uploadButton} onPress={() => handleShowAlert(key)}>
+                    <VectorIconComponent
+                      name="camera"
+                      size={24}
+                      color={AppStyles.colorSet.appPrimaryColor}
+                      type={ICON_TYPES.FontAwesome}
+                    />
+                    <Text style={styles.imageCountText}>{images.features[key].length}/2</Text>
+                  </TouchableOpacity>
+                )}
+              </View>
+            ) : (
+              <FlatList
+                horizontal
+                data={images.features[key]}
+                keyExtractor={(uri, index) => `${key}_${index}_${uri.replace(/[^a-zA-Z0-9]/g, '')}`}
+                renderItem={({ item: uri, index }) => (
+                  <View style={styles.imageContainer}>
+                    <Image source={{ uri }} style={styles.meterImagePreview} resizeMode="contain" />
+                    <TouchableOpacity
+                      style={styles.cancelIcon}
+                      onPress={() => handleRemoveImage(key, index)}
+                    >
+                      <VectorIconComponent
+                        name="closecircle"
+                        size={20}
+                        color={AppStyles.colorSet.appRed}
+                        type={ICON_TYPES.AntDesign}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                )}
+                ListEmptyComponent={() => (
+                  <TouchableOpacity
+                    style={[styles.meterImageButton, formErrors[`${key}Image`] && styles.imageError]}
+                    onPress={() => handleShowAlert(key)}
+                  >
+                    <VectorIconComponent
+                      name="camera"
+                      size={32}
+                      color={formErrors[`${key}Image`] ? AppStyles.colorSet.appRed : AppStyles.colorSet.appPrimaryColor}
+                      type={ICON_TYPES.FontAwesome}
+                    />
+                  </TouchableOpacity>
+                )}
+                ListFooterComponent={() => (
+                  images.features[key].length < 1 ? (
+                    <TouchableOpacity style={styles.uploadButton} onPress={() => handleShowAlert(key)}>
+                      <VectorIconComponent
+                        name="camera"
+                        size={24}
+                        color={AppStyles.colorSet.appPrimaryColor}
+                        type={ICON_TYPES.FontAwesome}
+                      />
+                      <Text style={styles.imageCountText}>{images.features[key].length}/1</Text>
+                    </TouchableOpacity>
+                  ) : null
+                )}
+              />
+            )}
+            {formErrors[`${key}Image`] && <Text style={styles.errorText}>{formErrors[`${key}Image`]}</Text>}
+          </View>
         </View>
-    );
+      );
 
     const renderRoomSection = (type, label, allowAdd = false) => {
         const fieldNames = {
-            frontSideAspect: ['walls', 'windows', 'lawn_drive_way', 'doors'],
-            hall: ['walls', 'windows', 'ceiling', 'floor', 'doors'],
-            livingRoom: ['walls', 'ceiling', 'windows', 'floor', 'doors'],
-            kitchen: ['walls', 'units', 'appliances', 'doors', 'floor', 'ceiling'],
+            frontSideAspect: ['walls', 'windows', 'lawn_drive_way', 'doors', "roof_guttering" , "hedges"],
+            hall: ['walls', 'windows', 'ceiling', 'floor', 'doors' ,'sockets_switches'],
+            livingRoom: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'sockets_switches'],
+            kitchen: ['walls', 'units', 'appliances', 'doors', 'floor', 'ceiling', 'sockets_switches'],
             garden: ['wall_fence', 'lawn', 'plants', 'structures'],
-            landing: ['walls', 'windows', 'ceiling', 'floor', 'doors'],
-            bedroom: ['walls', 'ceiling', 'windows', 'floor', 'doors'],
-            bathroom: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'fixtures', 'bath_shower_set'],
+            landing: ['walls', 'windows', 'ceiling', 'floor', 'doors' , 'sockets_switches'],
+            bedroom: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'sockets_switches'],
+            bathroom: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'fixtures', 'bath_shower_set', 'sockets_switches'],
         };
 
         const pluralMap = {
@@ -1294,7 +1347,7 @@ const EditProperty = ({ navigation, route }) => {
                                                 color={AppStyles.colorSet.appPrimaryColor}
                                                 type={ICON_TYPES.FontAwesome}
                                             />
-                                            <Text style={styles.imageCountText}>{room.images.length}/4</Text>
+                                            <Text style={styles.imageCountText}>{room.images.length}/6</Text>
                                         </TouchableOpacity>)
                                 )}
                             />

@@ -92,14 +92,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		007DFB0FB59C4B5F9FC724AC /* Inter_24pt-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Bold.ttf"; path = "../App/assets/fonts/Inter_24pt-Bold.ttf"; sourceTree = "<group>"; };
+		007DFB0FB59C4B5F9FC724AC /* Inter_24pt-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Bold.ttf"; path = "../App/assets/fonts/Inter_24pt-Bold.ttf"; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* inventoryWiseProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = inventoryWiseProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* inventoryWiseProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = inventoryWiseProjectTests.m; sourceTree = "<group>"; };
-		07CB01EC53D549239FF30B81 /* Inter_28pt-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-BlackItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-BlackItalic.ttf"; sourceTree = "<group>"; };
-		0863A0346F8341C8A3191429 /* Inter_28pt-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Black.ttf"; path = "../App/assets/fonts/Inter_28pt-Black.ttf"; sourceTree = "<group>"; };
-		0DE1313EDBEB445592433ABE /* Inter_28pt-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-BoldItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-BoldItalic.ttf"; sourceTree = "<group>"; };
-		12E3CD6B1B394C36A1E5F9D0 /* Lato-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Light.ttf"; path = "../App/assets/fonts/Lato-Light.ttf"; sourceTree = "<group>"; };
+		07CB01EC53D549239FF30B81 /* Inter_28pt-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-BlackItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-BlackItalic.ttf"; sourceTree = "<group>"; };
+		0863A0346F8341C8A3191429 /* Inter_28pt-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Black.ttf"; path = "../App/assets/fonts/Inter_28pt-Black.ttf"; sourceTree = "<group>"; };
+		0DE1313EDBEB445592433ABE /* Inter_28pt-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-BoldItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-BoldItalic.ttf"; sourceTree = "<group>"; };
+		12E3CD6B1B394C36A1E5F9D0 /* Lato-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Light.ttf"; path = "../App/assets/fonts/Lato-Light.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* inventoryWiseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inventoryWiseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = inventoryWiseProject/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = inventoryWiseProject/AppDelegate.mm; sourceTree = "<group>"; };
@@ -107,73 +107,73 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = inventoryWiseProject/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = inventoryWiseProject/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = inventoryWiseProject/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		199C1035CDF540E5B5D1F75C /* Inter_18pt-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-ExtraBoldItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		199C1035CDF540E5B5D1F75C /* Inter_18pt-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-ExtraBoldItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-inventoryWiseProject-inventoryWiseProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-inventoryWiseProject-inventoryWiseProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DDFA3387B2C4563846DC4C1 /* Inter_28pt-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-SemiBold.ttf"; path = "../App/assets/fonts/Inter_28pt-SemiBold.ttf"; sourceTree = "<group>"; };
-		1F3C65390AE1401E9E4A5FFA /* Inter_18pt-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Bold.ttf"; path = "../App/assets/fonts/Inter_18pt-Bold.ttf"; sourceTree = "<group>"; };
-		22AAA77B706D417993C1E36F /* Inter_28pt-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Regular.ttf"; path = "../App/assets/fonts/Inter_28pt-Regular.ttf"; sourceTree = "<group>"; };
-		247D8A50AD334B42B67808D0 /* Inter_18pt-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Regular.ttf"; path = "../App/assets/fonts/Inter_18pt-Regular.ttf"; sourceTree = "<group>"; };
-		2A958D7750A142BD9E228093 /* Inter_24pt-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-LightItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-LightItalic.ttf"; sourceTree = "<group>"; };
-		2CBE43021AD94908BAE6ADCD /* Inter_24pt-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-ExtraBold.ttf"; path = "../App/assets/fonts/Inter_24pt-ExtraBold.ttf"; sourceTree = "<group>"; };
-		3140D2EAAFAD412DADAA8524 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-BlackItalic.ttf"; path = "../App/assets/fonts/Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
-		31DDD75329E2484A83A84430 /* Inter_24pt-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-SemiBoldItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		3925D2BA34604230B09A8079 /* Inter_28pt-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ExtraBold.ttf"; path = "../App/assets/fonts/Inter_28pt-ExtraBold.ttf"; sourceTree = "<group>"; };
-		3A4A2D1F49A14A89836D59FB /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-BoldItalic.ttf"; path = "../App/assets/fonts/Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		1DDFA3387B2C4563846DC4C1 /* Inter_28pt-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-SemiBold.ttf"; path = "../App/assets/fonts/Inter_28pt-SemiBold.ttf"; sourceTree = "<group>"; };
+		1F3C65390AE1401E9E4A5FFA /* Inter_18pt-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Bold.ttf"; path = "../App/assets/fonts/Inter_18pt-Bold.ttf"; sourceTree = "<group>"; };
+		22AAA77B706D417993C1E36F /* Inter_28pt-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Regular.ttf"; path = "../App/assets/fonts/Inter_28pt-Regular.ttf"; sourceTree = "<group>"; };
+		247D8A50AD334B42B67808D0 /* Inter_18pt-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Regular.ttf"; path = "../App/assets/fonts/Inter_18pt-Regular.ttf"; sourceTree = "<group>"; };
+		2A958D7750A142BD9E228093 /* Inter_24pt-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-LightItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-LightItalic.ttf"; sourceTree = "<group>"; };
+		2CBE43021AD94908BAE6ADCD /* Inter_24pt-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-ExtraBold.ttf"; path = "../App/assets/fonts/Inter_24pt-ExtraBold.ttf"; sourceTree = "<group>"; };
+		3140D2EAAFAD412DADAA8524 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-BlackItalic.ttf"; path = "../App/assets/fonts/Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		31DDD75329E2484A83A84430 /* Inter_24pt-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-SemiBoldItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		3925D2BA34604230B09A8079 /* Inter_28pt-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ExtraBold.ttf"; path = "../App/assets/fonts/Inter_28pt-ExtraBold.ttf"; sourceTree = "<group>"; };
+		3A4A2D1F49A14A89836D59FB /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-BoldItalic.ttf"; path = "../App/assets/fonts/Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-inventoryWiseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inventoryWiseProject.debug.xcconfig"; path = "Target Support Files/Pods-inventoryWiseProject/Pods-inventoryWiseProject.debug.xcconfig"; sourceTree = "<group>"; };
-		450B036E0B93470F9B910624 /* Inter_18pt-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-ThinItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-ThinItalic.ttf"; sourceTree = "<group>"; };
-		483B1EC6A1F94D48A6CF0229 /* Inter_18pt-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-BlackItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-BlackItalic.ttf"; sourceTree = "<group>"; };
-		4B29A3A65E394EA8953AEE20 /* Inter_24pt-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Medium.ttf"; path = "../App/assets/fonts/Inter_24pt-Medium.ttf"; sourceTree = "<group>"; };
-		4BEEC25231F243EAB4C649D6 /* Inter_18pt-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-SemiBold.ttf"; path = "../App/assets/fonts/Inter_18pt-SemiBold.ttf"; sourceTree = "<group>"; };
-		4DDA3A1EDA8D4B0FB90420D4 /* Inter_24pt-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-MediumItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-MediumItalic.ttf"; sourceTree = "<group>"; };
-		54578BFBF697436397787B6D /* Inter_24pt-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Thin.ttf"; path = "../App/assets/fonts/Inter_24pt-Thin.ttf"; sourceTree = "<group>"; };
-		5625DE9D7DD647568FE60E0F /* Inter_18pt-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-BoldItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-BoldItalic.ttf"; sourceTree = "<group>"; };
-		56DC599E9EFD44DDAD61155C /* Inter_24pt-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-ExtraLightItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		450B036E0B93470F9B910624 /* Inter_18pt-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-ThinItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-ThinItalic.ttf"; sourceTree = "<group>"; };
+		483B1EC6A1F94D48A6CF0229 /* Inter_18pt-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-BlackItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-BlackItalic.ttf"; sourceTree = "<group>"; };
+		4B29A3A65E394EA8953AEE20 /* Inter_24pt-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Medium.ttf"; path = "../App/assets/fonts/Inter_24pt-Medium.ttf"; sourceTree = "<group>"; };
+		4BEEC25231F243EAB4C649D6 /* Inter_18pt-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-SemiBold.ttf"; path = "../App/assets/fonts/Inter_18pt-SemiBold.ttf"; sourceTree = "<group>"; };
+		4DDA3A1EDA8D4B0FB90420D4 /* Inter_24pt-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-MediumItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-MediumItalic.ttf"; sourceTree = "<group>"; };
+		54578BFBF697436397787B6D /* Inter_24pt-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Thin.ttf"; path = "../App/assets/fonts/Inter_24pt-Thin.ttf"; sourceTree = "<group>"; };
+		5625DE9D7DD647568FE60E0F /* Inter_18pt-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-BoldItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-BoldItalic.ttf"; sourceTree = "<group>"; };
+		56DC599E9EFD44DDAD61155C /* Inter_24pt-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-ExtraLightItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-inventoryWiseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inventoryWiseProject.release.xcconfig"; path = "Target Support Files/Pods-inventoryWiseProject/Pods-inventoryWiseProject.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-inventoryWiseProject-inventoryWiseProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inventoryWiseProject-inventoryWiseProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-inventoryWiseProject-inventoryWiseProjectTests/Pods-inventoryWiseProject-inventoryWiseProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5BE1DC04E39043878843B673 /* Inter_28pt-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Thin.ttf"; path = "../App/assets/fonts/Inter_28pt-Thin.ttf"; sourceTree = "<group>"; };
-		5D083374070040B9AE94060E /* Inter_28pt-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Medium.ttf"; path = "../App/assets/fonts/Inter_28pt-Medium.ttf"; sourceTree = "<group>"; };
+		5BE1DC04E39043878843B673 /* Inter_28pt-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Thin.ttf"; path = "../App/assets/fonts/Inter_28pt-Thin.ttf"; sourceTree = "<group>"; };
+		5D083374070040B9AE94060E /* Inter_28pt-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Medium.ttf"; path = "../App/assets/fonts/Inter_28pt-Medium.ttf"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-inventoryWiseProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-inventoryWiseProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		61280589755A4C049BB627B8 /* Inter_18pt-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Italic.ttf"; path = "../App/assets/fonts/Inter_18pt-Italic.ttf"; sourceTree = "<group>"; };
-		69F6F6D0E960441EA80691DF /* Inter_24pt-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-ThinItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-ThinItalic.ttf"; sourceTree = "<group>"; };
-		6E2FCA15E62E47BBA6D8C99B /* Inter_24pt-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-BlackItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-BlackItalic.ttf"; sourceTree = "<group>"; };
-		7674D295A96942D1BB335909 /* Inter_18pt-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Black.ttf"; path = "../App/assets/fonts/Inter_18pt-Black.ttf"; sourceTree = "<group>"; };
-		79BC4D54E8B6457EA148D616 /* Inter_18pt-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-SemiBoldItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		7C3793D0697348D3A8E33B9D /* Inter_24pt-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Light.ttf"; path = "../App/assets/fonts/Inter_24pt-Light.ttf"; sourceTree = "<group>"; };
-		7F76F768682C4D32A227B5F5 /* Inter_18pt-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-MediumItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-MediumItalic.ttf"; sourceTree = "<group>"; };
-		80ED72C46E1948AB8BEB4300 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-LightItalic.ttf"; path = "../App/assets/fonts/Lato-LightItalic.ttf"; sourceTree = "<group>"; };
-		813502C934EF40A6BC7DF02E /* Inter_24pt-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Italic.ttf"; path = "../App/assets/fonts/Inter_24pt-Italic.ttf"; sourceTree = "<group>"; };
+		61280589755A4C049BB627B8 /* Inter_18pt-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Italic.ttf"; path = "../App/assets/fonts/Inter_18pt-Italic.ttf"; sourceTree = "<group>"; };
+		69F6F6D0E960441EA80691DF /* Inter_24pt-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-ThinItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-ThinItalic.ttf"; sourceTree = "<group>"; };
+		6E2FCA15E62E47BBA6D8C99B /* Inter_24pt-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-BlackItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-BlackItalic.ttf"; sourceTree = "<group>"; };
+		7674D295A96942D1BB335909 /* Inter_18pt-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Black.ttf"; path = "../App/assets/fonts/Inter_18pt-Black.ttf"; sourceTree = "<group>"; };
+		79BC4D54E8B6457EA148D616 /* Inter_18pt-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-SemiBoldItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		7C3793D0697348D3A8E33B9D /* Inter_24pt-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Light.ttf"; path = "../App/assets/fonts/Inter_24pt-Light.ttf"; sourceTree = "<group>"; };
+		7F76F768682C4D32A227B5F5 /* Inter_18pt-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-MediumItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-MediumItalic.ttf"; sourceTree = "<group>"; };
+		80ED72C46E1948AB8BEB4300 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-LightItalic.ttf"; path = "../App/assets/fonts/Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		813502C934EF40A6BC7DF02E /* Inter_24pt-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Italic.ttf"; path = "../App/assets/fonts/Inter_24pt-Italic.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = inventoryWiseProject/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		83DBCAD98FCC4A9994EF0216 /* Inter_18pt-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Medium.ttf"; path = "../App/assets/fonts/Inter_18pt-Medium.ttf"; sourceTree = "<group>"; };
-		862F7C41A4F848A4AF9A2AFF /* Inter_18pt-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-ExtraLightItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
-		8995FA09025144E29D814233 /* Inter_28pt-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ExtraLight.ttf"; path = "../App/assets/fonts/Inter_28pt-ExtraLight.ttf"; sourceTree = "<group>"; };
+		83DBCAD98FCC4A9994EF0216 /* Inter_18pt-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Medium.ttf"; path = "../App/assets/fonts/Inter_18pt-Medium.ttf"; sourceTree = "<group>"; };
+		862F7C41A4F848A4AF9A2AFF /* Inter_18pt-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-ExtraLightItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		8995FA09025144E29D814233 /* Inter_28pt-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ExtraLight.ttf"; path = "../App/assets/fonts/Inter_28pt-ExtraLight.ttf"; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-inventoryWiseProject-inventoryWiseProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inventoryWiseProject-inventoryWiseProjectTests.release.xcconfig"; path = "Target Support Files/Pods-inventoryWiseProject-inventoryWiseProjectTests/Pods-inventoryWiseProject-inventoryWiseProjectTests.release.xcconfig"; sourceTree = "<group>"; };
-		8EAAF017A4E545479C1A778C /* PlaywriteIN-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlaywriteIN-ExtraLight.ttf"; path = "../App/assets/fonts/PlaywriteIN-ExtraLight.ttf"; sourceTree = "<group>"; };
-		92C2640B2BA84A4BBB81D755 /* Inter_18pt-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-ExtraBold.ttf"; path = "../App/assets/fonts/Inter_18pt-ExtraBold.ttf"; sourceTree = "<group>"; };
-		93A5C0A17F9A471EA2ECB7CD /* Inter_28pt-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Bold.ttf"; path = "../App/assets/fonts/Inter_28pt-Bold.ttf"; sourceTree = "<group>"; };
-		9C78696E02F2448EB334C14D /* Inter_24pt-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-ExtraBoldItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		A02B2F060BCC463E9A569143 /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../App/assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
-		A06BAE343B3240658A2C2445 /* Inter_18pt-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Light.ttf"; path = "../App/assets/fonts/Inter_18pt-Light.ttf"; sourceTree = "<group>"; };
-		A91E785B9D4E4A02AB1A4D49 /* Inter_24pt-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-BoldItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-BoldItalic.ttf"; sourceTree = "<group>"; };
-		B25C91721E694A1192AFEEA1 /* Inter_28pt-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Italic.ttf"; path = "../App/assets/fonts/Inter_28pt-Italic.ttf"; sourceTree = "<group>"; };
-		BBE7C11B23BB4153BF2318E6 /* Inter_24pt-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-SemiBold.ttf"; path = "../App/assets/fonts/Inter_24pt-SemiBold.ttf"; sourceTree = "<group>"; };
-		BF8392587964423EB64A4AAD /* Inter_24pt-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Regular.ttf"; path = "../App/assets/fonts/Inter_24pt-Regular.ttf"; sourceTree = "<group>"; };
-		C1B4E8606D4D473AB14DA344 /* Inter_18pt-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-LightItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-LightItalic.ttf"; sourceTree = "<group>"; };
-		C3E43329508843B08C540175 /* Inter_18pt-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-ExtraLight.ttf"; path = "../App/assets/fonts/Inter_18pt-ExtraLight.ttf"; sourceTree = "<group>"; };
-		C6F89C6334D946EC937D9BBF /* Inter_28pt-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ThinItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-ThinItalic.ttf"; sourceTree = "<group>"; };
-		C8E6FCA3F6A2418990EB362F /* Inter_28pt-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ExtraBoldItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		D0B3870F507341248B42859F /* Inter_24pt-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Black.ttf"; path = "../App/assets/fonts/Inter_24pt-Black.ttf"; sourceTree = "<group>"; };
-		D815FE49535A440188BEBB42 /* Lato-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Black.ttf"; path = "../App/assets/fonts/Lato-Black.ttf"; sourceTree = "<group>"; };
-		DB802C71D51D4E85B2A43E83 /* Inter_28pt-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Light.ttf"; path = "../App/assets/fonts/Inter_28pt-Light.ttf"; sourceTree = "<group>"; };
-		EA039F8428CD46B6AE36BD0B /* Inter_28pt-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-SemiBoldItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		EA0DC732B21A4AFA89A659C4 /* Inter_18pt-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Thin.ttf"; path = "../App/assets/fonts/Inter_18pt-Thin.ttf"; sourceTree = "<group>"; };
-		EA7A119231194E809B20636B /* Inter_24pt-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-ExtraLight.ttf"; path = "../App/assets/fonts/Inter_24pt-ExtraLight.ttf"; sourceTree = "<group>"; };
+		8EAAF017A4E545479C1A778C /* PlaywriteIN-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PlaywriteIN-ExtraLight.ttf"; path = "../App/assets/fonts/PlaywriteIN-ExtraLight.ttf"; sourceTree = "<group>"; };
+		92C2640B2BA84A4BBB81D755 /* Inter_18pt-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-ExtraBold.ttf"; path = "../App/assets/fonts/Inter_18pt-ExtraBold.ttf"; sourceTree = "<group>"; };
+		93A5C0A17F9A471EA2ECB7CD /* Inter_28pt-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Bold.ttf"; path = "../App/assets/fonts/Inter_28pt-Bold.ttf"; sourceTree = "<group>"; };
+		9C78696E02F2448EB334C14D /* Inter_24pt-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-ExtraBoldItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		A02B2F060BCC463E9A569143 /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../App/assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
+		A06BAE343B3240658A2C2445 /* Inter_18pt-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Light.ttf"; path = "../App/assets/fonts/Inter_18pt-Light.ttf"; sourceTree = "<group>"; };
+		A91E785B9D4E4A02AB1A4D49 /* Inter_24pt-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-BoldItalic.ttf"; path = "../App/assets/fonts/Inter_24pt-BoldItalic.ttf"; sourceTree = "<group>"; };
+		B25C91721E694A1192AFEEA1 /* Inter_28pt-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Italic.ttf"; path = "../App/assets/fonts/Inter_28pt-Italic.ttf"; sourceTree = "<group>"; };
+		BBE7C11B23BB4153BF2318E6 /* Inter_24pt-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-SemiBold.ttf"; path = "../App/assets/fonts/Inter_24pt-SemiBold.ttf"; sourceTree = "<group>"; };
+		BF8392587964423EB64A4AAD /* Inter_24pt-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Regular.ttf"; path = "../App/assets/fonts/Inter_24pt-Regular.ttf"; sourceTree = "<group>"; };
+		C1B4E8606D4D473AB14DA344 /* Inter_18pt-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-LightItalic.ttf"; path = "../App/assets/fonts/Inter_18pt-LightItalic.ttf"; sourceTree = "<group>"; };
+		C3E43329508843B08C540175 /* Inter_18pt-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-ExtraLight.ttf"; path = "../App/assets/fonts/Inter_18pt-ExtraLight.ttf"; sourceTree = "<group>"; };
+		C6F89C6334D946EC937D9BBF /* Inter_28pt-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ThinItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-ThinItalic.ttf"; sourceTree = "<group>"; };
+		C8E6FCA3F6A2418990EB362F /* Inter_28pt-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ExtraBoldItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		D0B3870F507341248B42859F /* Inter_24pt-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-Black.ttf"; path = "../App/assets/fonts/Inter_24pt-Black.ttf"; sourceTree = "<group>"; };
+		D815FE49535A440188BEBB42 /* Lato-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Black.ttf"; path = "../App/assets/fonts/Lato-Black.ttf"; sourceTree = "<group>"; };
+		DB802C71D51D4E85B2A43E83 /* Inter_28pt-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Light.ttf"; path = "../App/assets/fonts/Inter_28pt-Light.ttf"; sourceTree = "<group>"; };
+		EA039F8428CD46B6AE36BD0B /* Inter_28pt-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-SemiBoldItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		EA0DC732B21A4AFA89A659C4 /* Inter_18pt-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Thin.ttf"; path = "../App/assets/fonts/Inter_18pt-Thin.ttf"; sourceTree = "<group>"; };
+		EA7A119231194E809B20636B /* Inter_24pt-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_24pt-ExtraLight.ttf"; path = "../App/assets/fonts/Inter_24pt-ExtraLight.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		EDF94A25A3C94349BCB25015 /* Lato-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Italic.ttf"; path = "../App/assets/fonts/Lato-Italic.ttf"; sourceTree = "<group>"; };
-		F5DBEC8572B844F1B3BE28CB /* Inter_28pt-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-LightItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-LightItalic.ttf"; sourceTree = "<group>"; };
-		F6E2C8BFE275481E87024931 /* Inter_28pt-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ExtraLightItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
-		F749BF79AA624CDF8EE41453 /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../App/assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
-		FBF9974CBE874248A9610DE8 /* Inter_28pt-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-MediumItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-MediumItalic.ttf"; sourceTree = "<group>"; };
-		FD3359C0A1DB4ADD95C241FF /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-ThinItalic.ttf"; path = "../App/assets/fonts/Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		EDF94A25A3C94349BCB25015 /* Lato-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Italic.ttf"; path = "../App/assets/fonts/Lato-Italic.ttf"; sourceTree = "<group>"; };
+		F5DBEC8572B844F1B3BE28CB /* Inter_28pt-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-LightItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-LightItalic.ttf"; sourceTree = "<group>"; };
+		F6E2C8BFE275481E87024931 /* Inter_28pt-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ExtraLightItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		F749BF79AA624CDF8EE41453 /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../App/assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
+		FBF9974CBE874248A9610DE8 /* Inter_28pt-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-MediumItalic.ttf"; path = "../App/assets/fonts/Inter_28pt-MediumItalic.ttf"; sourceTree = "<group>"; };
+		FD3359C0A1DB4ADD95C241FF /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-ThinItalic.ttf"; path = "../App/assets/fonts/Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,7 +306,6 @@
 				8EAAF017A4E545479C1A778C /* PlaywriteIN-ExtraLight.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -734,24 +733,34 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 28PY89923W;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = inventoryWiseProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Inventory Wise";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.01;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.inventoryWise.App;
 				PRODUCT_NAME = inventoryWiseProject;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -762,22 +771,32 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 28PY89923W;
 				INFOPLIST_FILE = inventoryWiseProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Inventory Wise";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.01;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.inventoryWise.App;
 				PRODUCT_NAME = inventoryWiseProject;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -851,10 +870,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -923,10 +939,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

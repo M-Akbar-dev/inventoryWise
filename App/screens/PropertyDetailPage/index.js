@@ -14,6 +14,7 @@ import {
   Alert,
   Dimensions,
   Modal,
+  Platform,
 } from "react-native"
 import axios from "axios"
 import RNHTMLtoPDF from "react-native-html-to-pdf"
@@ -37,12 +38,12 @@ import { MAIN_SCREENS } from "../../constants/screens"
 const ROOM_FIELDS = {
   "Front & Side Aspects": ["walls", "windows", "lawn_drive_way", "doors",],
   entranceHall: ["walls", "windows", "ceiling", "floor", "doors"],
-  livingRoom: ["walls", "ceiling", "windows", "floor", "doors"],
-  kitchen: ["walls", "units", "appliances", "doors", "floor", "ceiling"],
+  livingRoom: ["walls", "ceiling", "windows", "floor", "doors", "sockets_switches"],
+  kitchen: ["walls", "units", "appliances", "doors", "floor", "ceiling", "sockets_switches"],
   rearGarden: ["fence", "lawn", "plants", "structures"],
   landing: ["walls", "windows", "ceiling", "floor", "doors"],
-  bedroom: ["walls", "ceiling", "windows", "floor", "doors"],
-  bathroom: ["walls", "ceiling", "windows", "floor", "doors", "fixtures", "bathShowerSet"],
+  bedroom: ["walls", "ceiling", "windows", "floor", "doors", "sockets_switches"],
+  bathroom: ["walls", "ceiling", "windows", "floor", "doors", "fixtures", "bathShowerSet", "sockets_switches"],
 }
 
 const { width } = Dimensions.get("window")
@@ -113,7 +114,7 @@ function PropertyDetailPage(props) {
           },
         })
         if (isMounted.current) {
-          console.log("Property Data:354554545454", JSON.stringify(response.data, null, 2))
+          console.log("Property Data:3545545454549900990", JSON.stringify(response.data, null, 2))
           setPropertyData(response.data)
           setLoading(false)
         }
@@ -143,7 +144,7 @@ function PropertyDetailPage(props) {
       console.log("Fetching:", fullUrl)
 
       const response = await fetch(fullUrl, {
-        headers: { Authorization: `${token}` }, // Only if required
+        headers: { Authorization: `${token}` },
       })
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`)
@@ -284,39 +285,44 @@ function PropertyDetailPage(props) {
 
       // Generate property areas HTML based on your provided Flutter structure
       const propertyAreasHTML =
-      propertyData?.property_details
-        ?.map((area) => {
-          const getFieldValue = (field) =>
-            area[field] !== null && area[field] !== undefined && area[field] !== ""
-              ? area[field]
-              : null;
-    
-          let surfaceField, surfaceLabel;
-          if (area.name === "Front & Side Aspect" || area.name === "Front & Side Aspects") {
-            surfaceField = "lawn_drive_way";
-            surfaceLabel = "Lawn/Driveway: ";
-          } else if (area.name === "Rear Garden") {
-            surfaceField = "lawn";
-            surfaceLabel = "Lawn: ";
-          } else {
-            surfaceField = "floor";
-            surfaceLabel = "Floor: ";
-          }
-    
-          const surfaceValue = getFieldValue(surfaceField);
-          const wallsValue = area.name === "Rear Garden"
-            ? getFieldValue("wall_fence")
-            : getFieldValue("walls");
-          const plantsValue = area.name === "Rear Garden" ? getFieldValue("plants") : null;
-          const structuresValue = area.name === "Rear Garden" ? getFieldValue("structures") : null;
-          const ceilingValue = getFieldValue("ceiling");
-          const windowsValue = getFieldValue("windows");
-          const doorsValue = getFieldValue("doors");
-          const appliancesValue = getFieldValue("appliances");
-          const unitsValue = getFieldValue("units");
-          const bathShowerValue = getFieldValue("bath_shower_set");
-    
-          return `
+        propertyData?.property_details
+          ?.map((area) => {
+            const getFieldValue = (field) =>
+              area[field] !== null && area[field] !== undefined && area[field] !== ""
+                ? area[field]
+                : null;
+
+            let surfaceField, surfaceLabel;
+            if (area.name === "Front & Side Aspect" || area.name === "Front & Side Aspects") {
+              surfaceField = "lawn_drive_way";
+              surfaceLabel = "Lawn/Driveway: ";
+            } else if (area.name === "Rear Garden") {
+              surfaceField = "lawn";
+              surfaceLabel = "Lawn: ";
+            } else {
+              surfaceField = "floor";
+              surfaceLabel = "Floor: ";
+            }
+
+            const surfaceValue = getFieldValue(surfaceField);
+            const wallsValue = area.name === "Rear Garden"
+              ? getFieldValue("wall_fence")
+              : getFieldValue("walls");
+            const plantsValue = area.name === "Rear Garden" ? getFieldValue("plants") : null;
+            const structuresValue = area.name === "Rear Garden" ? getFieldValue("structures") : null;
+            const ceilingValue = getFieldValue("ceiling");
+            const windowsValue = getFieldValue("windows");
+            const sockets_switches = getFieldValue("sockets_switches");
+            const doorsValue = getFieldValue("doors");
+            const appliancesValue = getFieldValue("appliances");
+            const unitsValue = getFieldValue("units");
+            const bathShowerValue = getFieldValue("bath_shower_set");
+            const RoofGuttering = getFieldValue("roof_guttering");
+            const hedges = getFieldValue("hedges");
+
+
+
+            return `
             <div class="area-section">
               <div class="area-title">${area.name || "Unnamed Area"}</div>
               <div class="area-table-container">
@@ -355,6 +361,22 @@ function PropertyDetailPage(props) {
                     <td>Windows</td>
                     <td>${windowsValue}</td>
                   </tr>` : ''}
+                  ${sockets_switches ? `
+                    <tr>
+                      <td>Sockets/Switchs</td>
+                      <td>${sockets_switches}</td>
+                    </tr>` : ''}
+                     ${RoofGuttering ? `
+                    <tr>
+                      <td>Roof & Guttering</td>
+                      <td>${RoofGuttering}</td>
+                    </tr>` : ''}
+
+                      ${hedges ? `
+                    <tr>
+                      <td>Hedges</td>
+                      <td>${hedges}</td>
+                    </tr>` : ''}
                   ${doorsValue ? `
                   <tr>
                     <td>Doors</td>
@@ -383,20 +405,20 @@ function PropertyDetailPage(props) {
               </div>
               <div class="area-images-container">
                 ${area.property_images?.length
-                  ? area.property_images
-                      .map((img) =>
-                        propertyImages[img.url]
-                          ? `<img class="area-image" src="${propertyImages[img.url]}" alt="${area.name} Image" />`
-                          : `<img class="area-image" src="${PLACEHOLDER_IMAGE}" alt="Placeholder" />`
-                      ).join("")
-                  : '<div style="grid-column: 1/-1; text-align: center; color: var(--text-light); font-size: 25px; padding: 20px;">No images available</div>'
-                }
+                ? area.property_images
+                  .map((img) =>
+                    propertyImages[img.url]
+                      ? `<img class="area-image" src="${propertyImages[img.url]}" alt="${area.name} Image" />`
+                      : `<img class="area-image" src="${PLACEHOLDER_IMAGE}" alt="Placeholder" />`
+                  ).join("")
+                : '<div style="grid-column: 1/-1; text-align: center; color: var(--text-light); font-size: 25px; padding: 20px;">No images available</div>'
+              }
               </div>
             </div>
           `;
-        })
-        .join("") || '<div class="area-section"><div class="area-title">No property areas available</div></div>';
-    
+          })
+          .join("") || '<div class="area-section"><div class="area-title">No property areas available</div></div>';
+
       const htmlContent = `
         <!DOCTYPE html>
         <html>
@@ -496,8 +518,8 @@ function PropertyDetailPage(props) {
             .main-image {
               display: block;
               margin: 0 auto 0 auto; /* Removed margin-bottom */
-              width: 35%; /* Decreased width */
-              height: 280px; /* Adjusted height proportionally */
+              width: 30%; /* Decreased width */
+              height: 220px; /* Adjusted height proportionally */
               object-fit: cover;
               border-radius: 10px;
                margin-bottom: 0; /* Removed bottom margin */
@@ -573,7 +595,7 @@ function PropertyDetailPage(props) {
               /* page-break-before: always; Removed to reduce blank pages */
             }
             .important-info .section-title {
-              font-size: 10px;
+              font-size: 15px;
               font-weight: bold;
               color: var(--primary-blue);
               text-align: center;
@@ -586,14 +608,14 @@ function PropertyDetailPage(props) {
               page-break-inside: avoid;
             }
             .info-subtitle {
-              font-size: 8px;
+              font-size: 15px;
               font-weight: bold;
               color: black;
               margin-bottom: 14px;
               padding: 8px 0;
             }
             .info-text {
-              font-size: 10px;
+              font-size: 12px;
               color: black;
               line-height: 1.4;
               text-align: justify;
@@ -765,7 +787,7 @@ function PropertyDetailPage(props) {
               page-break-inside: avoid;
             }
             .advice-title {
-              font-size: 12px;
+              font-size: 15px;
               font-weight: bold;
               color: var(--primary-blue);
               text-align: center;
@@ -888,8 +910,8 @@ function PropertyDetailPage(props) {
                 margin-bottom: 15px; /* Further adjusted for print */
               }
               .main-image {
-                width: 30%; /* Adjusted for print */
-                height: 220px; /* Adjusted for print */
+                width: 25%; /* Adjusted for print */
+                height: 180px; /* Adjusted for print */
                 margin-bottom: 0;
               }
               .info-card {
@@ -915,7 +937,7 @@ function PropertyDetailPage(props) {
                 font-size: 12px;
               }
               .section-title {
-                font-size: 12px;
+                font-size: 15px;
                margin-bottom: 10px; /* Reduced margin */
                 padding-bottom: 6px;
               }
@@ -927,12 +949,12 @@ function PropertyDetailPage(props) {
                 margin-bottom: 15px;
               }
               .info-subtitle {
-                font-size: 12px;
+                font-size: 15px;
                 margin-bottom: 10px;
                 padding: 6px 0;
               }
               .info-text {
-                font-size: 10px;
+                font-size: 12px;
                 margin-left: 12px;
               }
            
@@ -998,11 +1020,11 @@ function PropertyDetailPage(props) {
                 padding: 18px;
               }
               .advice-title {
-                font-size: 12px;
+                font-size: 15px;
                 margin-bottom: 10px; /* Further adjusted for print */
               }
               .advice-text {
-                font-size: 10px;
+                font-size: 12px;
               }
               .advice-card hr {
                 margin: 15px 0;
@@ -1077,8 +1099,8 @@ function PropertyDetailPage(props) {
                 margin-bottom: 25px;
               }
               .main-image {
-                width: 60%;
-                height: 400px;
+                width: 50%;
+                height: 300px;
                 margin-bottom: 5px;
               }
               .info-card {
@@ -1104,7 +1126,7 @@ function PropertyDetailPage(props) {
                 font-size: 10px;
               }
               .section-title {
-                font-size: 12px;
+                font-size: 15px;
                 margin-bottom: 12px;
                 padding-bottom: 6px;
               }
@@ -1116,12 +1138,12 @@ function PropertyDetailPage(props) {
                 margin-bottom: 15px;
               }
               .info-subtitle {
-                font-size: 12px;
+                font-size: 15px;
                 margin-bottom: 10px;
                 padding: 6px 0;
               }
               .info-text {
-                font-size: 10px;
+                font-size: 12px;
                 margin-left: 12px;
               }
               .meters-grid {
@@ -1173,6 +1195,7 @@ function PropertyDetailPage(props) {
               .area-image {
                 height: 280px;
               }
+                
               .advice-section {
                 margin: 35px 20px;
                 gap: 18px;
@@ -1181,11 +1204,11 @@ function PropertyDetailPage(props) {
                 padding: 18px;
               }
               .advice-title {
-                font-size: 12px;
+                font-size: 15px;
                 margin-bottom: 12px;
               }
               .advice-text {
-                font-size: 10px;
+                font-size: 12px;
               }
               .advice-card hr {
                 margin: 15px 0;
@@ -1283,11 +1306,9 @@ function PropertyDetailPage(props) {
             </div>
           </div>
 
-          <div style="padding-top: 30px;">
-          <div class="summary-section no-break style="margin-top: 50px;">
+          <div class="summary-section no-break">
             <div class="summary-title" style="font-size: 20px;">Summary</div>
             <div class="summary-text">${propertyData?.final_remarks || "Property inspection summary and key findings."}</div>
-          </div>
           </div>
 
           <div class="meters-section">
@@ -1343,7 +1364,7 @@ function PropertyDetailPage(props) {
     ${propertyData?.smoke_alarm
           ? `<div class="meter-card no-break">
           <div class="meter-header">
-            <span class="meter-label">Smoke Alarm: <span style="color: black;">${propertyData.smoke_alarm}</span></span>
+            <span class="meter-label">Smoke Alarms: <span style="color: black;">${propertyData.smoke_alarm}</span></span>
           </div>
           <hr />
           <img class="meter-image" src="${smokeAlarmFrontImg || PLACEHOLDER_IMAGE}" alt="Smoke Alarm Front" />
@@ -1351,10 +1372,21 @@ function PropertyDetailPage(props) {
           : ""
         }
 
+         ${propertyData?.smoke_alarm
+          ? `<div class="meter-card no-break">
+          <div class="meter-header">
+            <span class="meter-label">Smoke Alarms: <span style="color: black;">${propertyData.smoke_alarm}</span></span>
+          </div>
+          <hr />
+          <img class="meter-image" src="${smokeAlarmBackImg || PLACEHOLDER_IMAGE}" alt="Smoke Alarm Front" />
+        </div>`
+          : ""
+        }
+
     ${propertyData?.co_alarm
           ? `<div class="meter-card no-break">
           <div class="meter-header">
-            <span class="meter-label">CO Alarm: <span style="color: black;">${propertyData.co_alarm}</span></span>
+            <span class="meter-label">CO Alarms: <span style="color: black;">${propertyData.co_alarm}</span></span>
           </div>
           <hr />
           <img class="meter-image" src="${coAlarmFrontImg || PLACEHOLDER_IMAGE}" alt="CO Alarm Front" />
@@ -1364,12 +1396,16 @@ function PropertyDetailPage(props) {
 
   </div>
 </div>
- 
-
           <div class="property-areas">
             ${propertyAreasHTML}
           </div>
-          <div class="advice-section">
+<div class="advice-title" style="color: white; text-align: center;">
+  fafdasdfasdfadsfasdfasdf
+</div>
+  <div class="advice-title" style="color: white; text-align: center;">
+  fafdasdfasdfadsfasdfasdf
+</div>
+         <div class="advice-section" style="padding-top: 20px;">
             <div class="advice-card no-break">
               <div class="advice-title">Advice for Tenant:</div>
               <div class="advice-text">${propertyData?.advised_tenant_to || "No specific advice for tenant."}</div>
@@ -1413,10 +1449,16 @@ function PropertyDetailPage(props) {
                 Whilst every effort is made to ensure objectivity and accuracy, the Inventory Check-In Report provides no guarantee of the adequacy, compliance with standards or safety of any contents or equipment. The report will provide a record that such items exist in the property as at the date of the Inventory Check-In Report and the superficial condition of same. The report is not a building survey, a structural survey or a valuation, will not necessarily mention structural defects and does not give any advice on the cost of any repair work, or the types of repair which should be used.
               </div>
             </div>
+<div class="advice-title" style="color: white; text-align: center;">
+  fafdasdfasdfadsfasdfasdf
+</div>
+<div class="advice-title" style="color: white; text-align: center;">
+  fafdasdfasdfadsfasdfasdf
+</div>
             <div class="info-item no-break">
               <div class="info-subtitle">What is inspected and not inspected?</div>
               <div class="info-text">
-                The Inventory Clerk carries out a visual inspection of the inside of the main building together with any contents and will carry out a general inspection of the remainder of the building including the exterior cosmetic elements and any permanent outbuildings. For properties let on an unfurnished basis, the inspection will include floor coverings, curtains, curtain tracks, blinds and kitchen appliances if appropriate, but will exclude other contents. Gardens and their contents will be inspected and reported upon. The inspection is non-invasive. The means that the Inventory Clerk does not take up carpets, floor coverings or floor boards, move large items of furniture, test services, remove secured panels or undo electrical fittings. Especially valuable contents such as antiques, personal items or items of jewellery are excluded from the report. Kitchenware will be inspected but individual items will not be condition rated. Common parts in relation to flats, exterior structural elements of the main building and the structure of any outbuildings will not be inspected. Roof spaces and cellars are not inspected. Areas which are locked or where full access is not possible, for example, attics or excessively full cupboards or outbuildings are not inspected.
+                The Inventory Clerk carries out a visual inspection of the inside of the main building together with any contents and will carry out a general inspection of the remainder of the building including the exterior cosmetic elements and any permanent outbuildings. For properties let on an unfurnished basis, the inspection will include floor coverings, curtains, curtain tracks, blinds and kitchen appliances if appropriate, but will exclude other contents. Gardens and their contents will be inspected and reported upon. The inspection is non-invasive. The means that the Inventory Clerk does not take up carpets, floor coverings or floor boards, move large items of furniture, test services, remove secured panels or undo electrical fittings.
               </div>
             </div>
             <div class="info-item no-break">
@@ -1425,7 +1467,7 @@ function PropertyDetailPage(props) {
                 The Mid-Term Inspection Report provides a fair, objective and impartial record of the general condition of the contents of the Property as well as its internal condition during the lease of the Property. Any defects and maintenance issues noted during the inspection are highlighted in the report. The tenants are required to rectify the issues which come under their obligations as per the terms & conditions of the tenancy agreement. Similarly, the landlord of the property will be asked to deal with the maintenance issues accordingly.
               </div>
             </div>
-            <div class="info-item no-break">
+            <div class="info-item">
               <div class="info-subtitle">What is a Check-Out Report?</div>
               <div class="info-text">
                 The Check-Out Report provides a fair, objective and impartial record of the general condition of the contents of the Property as well as its internal condition at the end of the lease of the Property. Normally, the return of the tenancy deposit is based on the outcome of the Check- Out report.
@@ -1433,17 +1475,7 @@ function PropertyDetailPage(props) {
             </div>
           </div>
          <div class="signatures no-break" style="display: flex; align-items: center; gap: 20px;">
-  <div class="signature-box">
-    <div class="signature-title">Tenant's Signature</div>
-    <div style="display: flex; justify-content: center; align-items: center; height: auto; min-height: 100px;">
-      ${tenantSignature ? `<img class="signature-image" src="${tenantSignature}" alt="Tenant Signature" />` : '<div style="height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 25px;">No signature available</div>'}
-    </div>
-  </div>
-
-  <!-- Vertical Red Line -->
-  <div style="width: 2px; height: 200px; background-color: gray;"></div>
-
-  <div class="signature-box">
+         <div class="signature-box">
     <div class="signature-title">Inspector's Signature</div>
     <div style="display: flex; justify-content: center; align-items: center; height: auto; min-height: 100px;">
       ${inspectorSignature ? `<img class="signature-image" src="${inspectorSignature}" alt="Inspector Signature" />` : '<div style="height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 25px;">No signature available</div>'}
@@ -1465,8 +1497,12 @@ function PropertyDetailPage(props) {
       if (!file.base64) {
         throw new Error("PDF base64 data not generated")
       }
-      // Create InventoryWise directory if needed
-      const folderPath = `${RNFS.DownloadDirectoryPath}/InventoryWiseApp`
+      // const folderPath = `${RNFS.DownloadDirectoryPath}/InventoryWiseApp`
+      const folderPath =
+  Platform.OS === "android"
+    ? `${RNFS.DownloadDirectoryPath}/InventoryWiseApp`
+    : `${RNFS.DocumentDirectoryPath}/InventoryWiseApp`
+
       const fileExists = await RNFS.exists(folderPath)
       if (!fileExists) {
         await RNFS.mkdir(folderPath)
@@ -1547,6 +1583,7 @@ function PropertyDetailPage(props) {
     setSelectedImage(null)
   }
   const renderPropertyDetail = ({ item }) => {
+    console.log(item, "?A>SD?F>A?SDF>A?SFDAS/")
     const roomType = normalizeRoomName(item.name)
     const fields = ROOM_FIELDS[roomType] || []
     const fieldData = {
@@ -1564,6 +1601,10 @@ function PropertyDetailPage(props) {
       Structures: item.structures || (fields.includes("structures") ? "Fair" : null),
       Fixtures: item.fixtures || (fields.includes("fixtures") ? "Fair" : null),
       BathShowerSet: item.bath_shower_set || (fields.includes("bathShowerSet") ? "Fair" : null),
+      socketsAndSwitches: item.sockets_switches || (fields.includes("sockets_switches") ? "Fair" : null),
+      hedges: item.hedges || (fields.includes("hedges") ? "Fair" : null),
+      roof_guttering: item.roof_guttering || (fields.includes("roof_guttering") ? "Fair" : null),
+
     }
     return (
       <View style={styles.sectionContainer}>

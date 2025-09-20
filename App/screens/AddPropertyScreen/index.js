@@ -121,7 +121,7 @@ const AddPropertyScreen = ({ navigation }) => {
       heatingSystem: [],
     },
   });
-  console.log(images.main, "this is the main image of the cargo")
+  // console.log(images.main, "this is the main image of the cargo")
   const [currentImageType, setCurrentImageType] = useState(null);
   const [currentRoomId, setCurrentRoomId] = useState(null);
   const [currentRoomType, setCurrentRoomType] = useState(null);
@@ -132,7 +132,7 @@ const AddPropertyScreen = ({ navigation }) => {
         id: generateUniqueId(),
         name: 'Front & Side Aspect',
         type: 'frontSideAspect',
-        fields: { walls: 'Fair', window: 'Fair', lawn_drive_way: 'Fair', doors: 'Fair' },
+        fields: { walls: 'Fair', window: 'Fair', lawn_drive_way: 'Fair', doors: 'Fair' , roof_guttering : "Fair" , hedges :"Fair" },
         images: [],
         description: '',
       },
@@ -142,7 +142,7 @@ const AddPropertyScreen = ({ navigation }) => {
         id: generateUniqueId(),
         name: 'Entrance Hall',
         type: 'hall',
-        fields: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair' },
+        fields: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair' ,sockets_switches : 'Fair'},
         images: [],
         description: '',
       },
@@ -152,7 +152,7 @@ const AddPropertyScreen = ({ navigation }) => {
         id: generateUniqueId(),
         name: 'Living Room 1',
         type: 'livingRoom',
-        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' },
+        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' ,sockets_switches : 'Fair'},
         images: [],
         description: '',
       },
@@ -160,7 +160,7 @@ const AddPropertyScreen = ({ navigation }) => {
         id: generateUniqueId(),
         name: 'Living Room 2',
         type: 'livingRoom',
-        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' },
+        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' ,sockets_switches : 'Fair'},
         images: [],
         description: '',
       },
@@ -170,7 +170,7 @@ const AddPropertyScreen = ({ navigation }) => {
         id: generateUniqueId(),
         name: 'Kitchen',
         type: 'kitchen',
-        fields: { walls: 'Fair', units: 'Fair', appliances: 'Fair', doors: 'Fair', floor: 'Fair', ceiling: 'Fair' },
+        fields: { walls: 'Fair', units: 'Fair', appliances: 'Fair', doors: 'Fair', floor: 'Fair', ceiling: 'Fair' ,sockets_switches : 'Fair'},
         images: [],
         description: '',
       },
@@ -190,7 +190,7 @@ const AddPropertyScreen = ({ navigation }) => {
         id: generateUniqueId(),
         name: 'Landing',
         type: 'landing',
-        fields: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair' },
+        fields: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair' , sockets_switches : 'Fair' },
         images: [],
         description: '',
       },
@@ -200,7 +200,7 @@ const AddPropertyScreen = ({ navigation }) => {
         id: generateUniqueId(),
         name: 'Bedroom 1',
         type: 'bedroom',
-        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' },
+        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair',sockets_switches : 'Fair' },
         images: [],
         description: '',
       },
@@ -208,7 +208,7 @@ const AddPropertyScreen = ({ navigation }) => {
         id: generateUniqueId(),
         name: 'Bedroom 2',
         type: 'bedroom',
-        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' },
+        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair',sockets_switches : 'Fair' },
         images: [],
         description: '',
       },
@@ -216,7 +216,7 @@ const AddPropertyScreen = ({ navigation }) => {
         id: generateUniqueId(),
         name: 'Bedroom 3',
         type: 'bedroom',
-        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' },
+        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' ,sockets_switches : 'Fair'},
         images: [],
         description: '',
       },
@@ -226,7 +226,7 @@ const AddPropertyScreen = ({ navigation }) => {
         id: generateUniqueId(),
         name: 'Bathroom 1',
         type: 'bathroom',
-        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', fixtures: 'Fair', bath_shower_set: 'Fair' },
+        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', fixtures: 'Fair', bath_shower_set: 'Fair' ,sockets_switches : 'Fair'},
         images: [],
         description: '',
       },
@@ -234,7 +234,7 @@ const AddPropertyScreen = ({ navigation }) => {
         id: generateUniqueId(),
         name: 'Bathroom 2',
         type: 'bathroom',
-        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', fixtures: 'Fair', bath_shower_set: 'Fair' },
+        fields: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', fixtures: 'Fair', bath_shower_set: 'Fair',sockets_switches : 'Fair' },
         images: [],
         description: '',
       },
@@ -356,9 +356,9 @@ const AddPropertyScreen = ({ navigation }) => {
   const addRoom = (type) => {
     dispatch(AlertMiddleware.showSuccess(`${type} Added Successfully`));
     const fieldDefaults = {
-      livingRoom: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' },
-      bedroom: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' },
-      bathroom: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', fixtures: 'Fair', bath_shower_set: 'Fair' },
+      livingRoom: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' ,sockets_switches : 'Fair'},
+      bedroom: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair' ,sockets_switches : 'Fair'},
+      bathroom: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', fixtures: 'Fair', bath_shower_set: 'Fair' ,sockets_switches : 'Fair'},
     };
 
     const pluralMap = {
@@ -532,14 +532,14 @@ const AddPropertyScreen = ({ navigation }) => {
       Object.entries(roomSections).forEach(([sectionKey, rooms]) => {
         rooms.forEach((room) => {
           const fieldMappings = {
-            frontSideAspects: ['walls', 'window', 'lawn_drive_way', 'doors'],
-            entranceHalls: ['walls', 'windows', 'ceiling', 'floor', 'doors'],
-            livingRooms: ['walls', 'ceiling', 'windows', 'floor', 'doors'],
-            kitchens: ['walls', 'units', 'appliances', 'doors', 'floor', 'ceiling'],
+            frontSideAspects: ['walls', 'window', 'lawn_drive_way', 'doors', 'hedges', 'roof_guttering'],
+            entranceHalls: ['walls', 'windows', 'ceiling', 'floor', 'doors' ,'sockets_switches'],
+            livingRooms: ['walls', 'ceiling', 'windows', 'floor', 'doors' ,'sockets_switches'],
+            kitchens: ['walls', 'units', 'appliances', 'doors', 'floor', 'ceiling' ,'sockets_switches'],
             rearGardens: ['wall_fence', 'lawn', 'plants', 'structures'],
-            landings: ['walls', 'windows', 'ceiling', 'floor', 'doors'],
-            bedrooms: ['walls', 'ceiling', 'windows', 'floor', 'doors'],
-            bathrooms: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'fixtures', 'bath_shower_set'],
+            landings: ['walls', 'windows', 'ceiling', 'floor', 'doors' , 'sockets_switches'],
+            bedrooms: ['walls', 'ceiling', 'windows', 'floor', 'doors' , 'sockets_switches'],
+            bathrooms: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'fixtures', 'bath_shower_set' , 'sockets_switches'],
           };
 
           const detail = {
@@ -706,7 +706,7 @@ const AddPropertyScreen = ({ navigation }) => {
 
   const openGallery = async () => {
     const singleImageFeatures = ['prePaidElectricMeter', 'prePaidGasMeter', 'waterMeter', 'smokeAlarm', 'coAlarm'];
-    const selectionLimit = currentImageType === 'main' || singleImageFeatures.includes(currentImageType) ? 1 : 4;
+    const selectionLimit = currentImageType === 'main' || singleImageFeatures.includes(currentImageType) ? 1 : 6;
 
     launchImageLibrary(
       {
@@ -776,12 +776,12 @@ const AddPropertyScreen = ({ navigation }) => {
 
   const handleImageUpload = async (response) => {
     if (response.didCancel || response.errorCode) return;
-
+  
     try {
       const maxMainImages = 1;
-      const maxFeatureImages = ['prePaidElectricMeter', 'prePaidGasMeter', 'waterMeter', 'smokeAlarm', 'coAlarm'].includes(currentImageType) ? 1 : 1;
-      const maxRoomImages = 5;
-
+      const maxFeatureImages = currentImageType === 'smokeAlarm' ? 2 : 1; // Allow 2 images for smokeAlarm
+      const maxRoomImages = 6;
+  
       let currentImageCount = 0;
       if (currentImageType === 'main') {
         currentImageCount = images.main.length;
@@ -803,7 +803,7 @@ const AddPropertyScreen = ({ navigation }) => {
         const room = roomSections[pluralMap[currentRoomType]]?.find((r) => r.id === currentRoomId);
         currentImageCount = room?.images.length || 0;
         if (currentImageCount >= maxRoomImages) {
-          Alert.alert('Limit Reached', `Maximum three images allowed for ${room.name}.`);
+          Alert.alert('Limit Reached', `Maximum five images allowed for ${room.name}.`);
           return;
         }
       } else if (TOGGLE_ITEMS.some((item) => item.key === currentImageType)) {
@@ -811,12 +811,14 @@ const AddPropertyScreen = ({ navigation }) => {
         if (currentImageCount >= maxFeatureImages) {
           Alert.alert(
             'Limit Reached',
-            `Only one image allowed for ${TOGGLE_ITEMS.find((item) => item.key === currentImageType).label}.`
+            `Maximum ${maxFeatureImages} image${maxFeatureImages > 1 ? 's' : ''} allowed for ${
+              TOGGLE_ITEMS.find((item) => item.key === currentImageType).label
+            }.`
           );
           return;
         }
       }
-
+  
       let allowedImages = response.assets;
       if (currentImageType === 'main') {
         allowedImages = response.assets.slice(0, maxMainImages - currentImageCount);
@@ -825,11 +827,11 @@ const AddPropertyScreen = ({ navigation }) => {
       } else if (TOGGLE_ITEMS.some((item) => item.key === currentImageType)) {
         allowedImages = response.assets.slice(0, maxFeatureImages - currentImageCount);
       }
-
+  
       if (allowedImages.length === 0) return;
-
+  
       const uploadedUrls = await uploadImages(allowedImages, token, dispatch);
-
+  
       if (currentImageType === 'main') {
         setImages((prev) => ({ ...prev, main: [...prev.main, ...uploadedUrls] }));
       } else if (currentImageType === 'room') {
@@ -858,14 +860,12 @@ const AddPropertyScreen = ({ navigation }) => {
           },
         }));
       }
-
+  
       if (response.assets.length > allowedImages.length) {
         Alert.alert(
           'Partial Upload',
-          `Only ${allowedImages.length} image(s) were uploaded due to the ${currentImageType === 'main' ||
-            ['prePaidElectricMeter', 'prePaidGasMeter', 'waterMeter', 'smokeAlarm', 'coAlarm'].includes(currentImageType)
-            ? '1-image'
-            : '3-image'
+          `Only ${allowedImages.length} image${allowedImages.length > 1 ? 's' : ''} were uploaded due to the ${
+            currentImageType === 'main' || currentImageType !== 'smokeAlarm' ? '1-image' : '2-image'
           } limit.`
         );
       }
@@ -1080,41 +1080,46 @@ const AddPropertyScreen = ({ navigation }) => {
       </View>
       <View style={styles.meterImageContainer}>
         <Text style={styles.imageUploadLabel}>Upload {label}</Text>
-        <FlatList
-          horizontal
-          data={images.features[key]}
-          keyExtractor={(uri, index) => `${key}_${index}_${uri.replace(/[^a-zA-Z0-9]/g, '')}`}
-          renderItem={({ item: uri, index }) => (
-            <View style={styles.imageContainer}>
-              <Image source={{ uri }} style={styles.meterImagePreview} resizeMode="contain" />
-              <TouchableOpacity
-                style={styles.cancelIcon}
-                onPress={() => handleRemoveImage(key, index)}
-              >
-                <VectorIconComponent
-                  name="closecircle"
-                  size={20}
-                  color={AppStyles.colorSet.appRed}
-                  type={ICON_TYPES.AntDesign}
-                />
-              </TouchableOpacity>
-            </View>
-          )}
-          ListEmptyComponent={() => (
-            <TouchableOpacity
-              style={[styles.meterImageButton, formErrors[`${key}Image`] && styles.imageError]}
-              onPress={() => handleShowAlert(key)}
-            >
-              <VectorIconComponent
-                name="camera"
-                size={32}
-                color={AppStyles.colorSet.appPrimaryColor}
-                type={ICON_TYPES.FontAwesome}
-              />
-            </TouchableOpacity>
-          )}
-          ListFooterComponent={() => (
-            images.features[key].length < 1 ? (
+        {key === 'smokeAlarm' ? (
+          <View style={styles.smokeAlarmImageContainer}>
+            {['Front', 'Back'].map((position, index) => (
+              <View key={`${key}_${position}`} style={styles.smokeAlarmImageSlot}>
+                <Text style={styles.smokeAlarmLabel}>{position}</Text>
+                {images.features[key][index] ? (
+                  <View style={styles.imageContainer}>
+                    <Image
+                      source={{ uri: images.features[key][index] }}
+                      style={styles.meterImagePreview}
+                      resizeMode="contain"
+                    />
+                    <TouchableOpacity
+                      style={styles.cancelIcon}
+                      onPress={() => handleRemoveImage(key, index)}
+                    >
+                      <VectorIconComponent
+                        name="closecircle"
+                        size={20}
+                        color={AppStyles.colorSet.appRed}
+                        type={ICON_TYPES.AntDesign}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                ) : (
+                  <TouchableOpacity
+                    style={[styles.meterImageButton, formErrors[`${key}Image`] && styles.imageError]}
+                    onPress={() => handleShowAlert(key)}
+                  >
+                    <VectorIconComponent
+                      name="camera"
+                      size={32}
+                      color={formErrors[`${key}Image`] ? AppStyles.colorSet.appRed : AppStyles.colorSet.appPrimaryColor}
+                      type={ICON_TYPES.FontAwesome}
+                    />
+                  </TouchableOpacity>
+                )}
+              </View>
+            ))}
+            {images.features[key].length < 2 && (
               <TouchableOpacity style={styles.uploadButton} onPress={() => handleShowAlert(key)}>
                 <VectorIconComponent
                   name="camera"
@@ -1122,11 +1127,59 @@ const AddPropertyScreen = ({ navigation }) => {
                   color={AppStyles.colorSet.appPrimaryColor}
                   type={ICON_TYPES.FontAwesome}
                 />
-                <Text style={styles.imageCountText}>{images.features[key].length}/1</Text>
+                <Text style={styles.imageCountText}>{images.features[key].length}/2</Text>
               </TouchableOpacity>
-            ) : null
-          )}
-        />
+            )}
+          </View>
+        ) : (
+          <FlatList
+            horizontal
+            data={images.features[key]}
+            keyExtractor={(uri, index) => `${key}_${index}_${uri.replace(/[^a-zA-Z0-9]/g, '')}`}
+            renderItem={({ item: uri, index }) => (
+              <View style={styles.imageContainer}>
+                <Image source={{ uri }} style={styles.meterImagePreview} resizeMode="contain" />
+                <TouchableOpacity
+                  style={styles.cancelIcon}
+                  onPress={() => handleRemoveImage(key, index)}
+                >
+                  <VectorIconComponent
+                    name="closecircle"
+                    size={20}
+                    color={AppStyles.colorSet.appRed}
+                    type={ICON_TYPES.AntDesign}
+                  />
+                </TouchableOpacity>
+              </View>
+            )}
+            ListEmptyComponent={() => (
+              <TouchableOpacity
+                style={[styles.meterImageButton, formErrors[`${key}Image`] && styles.imageError]}
+                onPress={() => handleShowAlert(key)}
+              >
+                <VectorIconComponent
+                  name="camera"
+                  size={32}
+                  color={formErrors[`${key}Image`] ? AppStyles.colorSet.appRed : AppStyles.colorSet.appPrimaryColor}
+                  type={ICON_TYPES.FontAwesome}
+                />
+              </TouchableOpacity>
+            )}
+            ListFooterComponent={() => (
+              images.features[key].length < 1 ? (
+                <TouchableOpacity style={styles.uploadButton} onPress={() => handleShowAlert(key)}>
+                  <VectorIconComponent
+                    name="camera"
+                    size={24}
+                    color={AppStyles.colorSet.appPrimaryColor}
+                    type={ICON_TYPES.FontAwesome}
+                  />
+                  <Text style={styles.imageCountText}>{images.features[key].length}/1</Text>
+                </TouchableOpacity>
+              ) : null
+            )}
+          />
+        )}
         {formErrors[`${key}Image`] && <Text style={styles.errorText}>{formErrors[`${key}Image`]}</Text>}
       </View>
     </View>
@@ -1134,14 +1187,14 @@ const AddPropertyScreen = ({ navigation }) => {
 
   const renderRoomSection = (type, label, allowAdd = false) => {
     const fieldNames = {
-      frontSideAspect: ['walls', 'window', 'lawn_drive_way', 'doors'],
-      hall: ['walls', 'windows', 'ceiling', 'floor', 'doors'],
-      livingRoom: ['walls', 'ceiling', 'windows', 'floor', 'doors'],
-      kitchen: ['walls', 'units', 'appliances', 'doors', 'floor', 'ceiling'],
+      frontSideAspect: ['walls', 'window', 'lawn_drive_way', 'doors' , "roof_guttering" , "hedges"],
+      hall: ['walls', 'windows', 'ceiling', 'floor', 'doors' ,'sockets_switches'],
+      livingRoom: ['walls', 'ceiling', 'windows', 'floor', 'doors','sockets_switches'],
+      kitchen: ['walls', 'units', 'appliances', 'doors', 'floor', 'ceiling' , 'sockets_switches'],
       garden: ['wall_fence', 'lawn', 'plants', 'structures'],
-      landing: ['walls', 'windows', 'ceiling', 'floor', 'doors'],
-      bedroom: ['walls', 'ceiling', 'windows', 'floor', 'doors'],
-      bathroom: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'fixtures', 'bath_shower_set'],
+      landing: ['walls', 'windows', 'ceiling', 'floor', 'doors','sockets_switches'],
+      bedroom: ['walls', 'ceiling', 'windows', 'floor', 'doors' ,'sockets_switches'],
+      bathroom: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'fixtures', 'bath_shower_set' ,'sockets_switches'],
     };
 
     const pluralMap = {
@@ -1251,7 +1304,7 @@ const AddPropertyScreen = ({ navigation }) => {
                         color={AppStyles.colorSet.appPrimaryColor}
                         type={ICON_TYPES.FontAwesome}
                       />
-                      <Text style={styles.imageCountText}>{room.images.length}/4</Text>
+                      <Text style={styles.imageCountText}>{room.images.length}/6</Text>
                     </TouchableOpacity>
                   ) : null
                 )}

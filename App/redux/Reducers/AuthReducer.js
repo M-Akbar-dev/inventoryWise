@@ -14,8 +14,6 @@ const initialState = {
   refreshToken: null,
   textSize: 0,
   userImg: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png",
-  userStatus: "Active",
-  // TxtToSpeech: false
 };
 
 export default function AuthReducer(state = initialState, action) {
@@ -55,21 +53,6 @@ export default function AuthReducer(state = initialState, action) {
         textSize: action.payload,
 
       };
-
-    case USER_STATUS:
-      return {
-        ...state,
-        userStatus: action.payload,
-
-      };
-
-
-    // case TEXT_TO_SPEECH:
-    //   return {
-    //     ...state,
-    //     TxtToSpeech: action.payload,
-
-    //   };
 
     case LOGOUT:
       return {
