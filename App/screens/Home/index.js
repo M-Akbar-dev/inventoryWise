@@ -169,7 +169,7 @@ function Home(props) {
 
   useEffect(() => {
     getPropertiesByUserId()
-  }, [])
+   }, [])
 
   const getPropertiesByUserId = async () => {
     dispatch(LoaderAction.LoaderTrue())

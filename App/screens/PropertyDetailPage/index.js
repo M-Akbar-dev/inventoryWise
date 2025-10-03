@@ -16,6 +16,7 @@ import {
   Modal,
   Platform,
 } from "react-native"
+import Share from "react-native-share"
 import axios from "axios"
 import RNHTMLtoPDF from "react-native-html-to-pdf"
 import RNFS from "react-native-fs"
@@ -443,10 +444,10 @@ function PropertyDetailPage(props) {
             }
             body {
               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-             margin: 20px 15px 15px 15px; /* Reduced all margins */
+             margin: 10px 12px 12px 12px; /* tighter page margins */
               color: var(--text-dark);
               line-height: 1.5;
-              padding-top: 20px;
+              padding-top: 8px; /* less top padding */
              font-size: 12px; /* Slightly reduced base font size */
               background: #ffffff;
             }
@@ -454,7 +455,7 @@ function PropertyDetailPage(props) {
             .header {
               background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
               border-radius: 8px;
-              padding: 15px 20px; /* Reduced padding */
+              padding: 2px 3px; /* Reduced padding */
             margin-bottom: 10px; /* Reduced margin */
               color: white;
               display: flex;
@@ -463,8 +464,8 @@ function PropertyDetailPage(props) {
               page-break-after: avoid;
             }
             .logo {
-              height: 250px; /* Increased size */
-              width: 600px; /* Increased size */
+              height: 200px; /* Increased size */
+              width: 400px; /* Increased size */
               object-fit: contain;
               border-radius: 6px;
               padding: 2px;
@@ -481,13 +482,16 @@ function PropertyDetailPage(props) {
               align-items: center;
             }
             .company-label {
-              font-weight: 600;
+              font-weight: 400;
               min-width: 110px;
               color: var(--light-blue);
+              font-size: 8px;
             }
             .company-value {
-              font-weight: 400;
+              font-weight: 200;
               color: white;
+              font-size: 12px;
+
             }
             /* Title Section */
             .title-section {
@@ -518,8 +522,8 @@ function PropertyDetailPage(props) {
             .main-image {
               display: block;
               margin: 0 auto 0 auto; /* Removed margin-bottom */
-              width: 30%; /* Decreased width */
-              height: 220px; /* Adjusted height proportionally */
+              width: 25%; /* Decreased width */
+              height: 180px; /* Adjusted height proportionally */
               object-fit: cover;
               border-radius: 10px;
                margin-bottom: 0; /* Removed bottom margin */
@@ -550,7 +554,7 @@ function PropertyDetailPage(props) {
               font-size: 8px;
             }
             .info-table td {
-             padding: 15px !important; /* Reduced padding */
+             padding: 5px !important; /* Reduced padding */
               border-bottom: 1px solid black;
             }
             .info-table .label {
@@ -565,7 +569,7 @@ function PropertyDetailPage(props) {
             }
             /* Summary */
             .summary-section {
-              margin: 25px 40px; /* Reduced margin */
+              margin: 25px 20px; /* Reduced margin */
               background: var(--background-light);
               border-radius: 12px;
               padding: 25px;
@@ -622,23 +626,25 @@ function PropertyDetailPage(props) {
               margin-left: 18px;
             }
             /* Meters and Alarms Section */
-        .meters-section {
-  margin: 50px 30px 20px 30px; /* top right bottom left */
+            .meters-section {
+  margin: 20px 30px 20px 30px; /* reduced top space */
+  page-break-inside: avoid; /* keep meters section on one page */
+  break-inside: avoid;
 }
           .meters-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 25px;
   justify-items: center;
   align-items: start;
 }
           .meter-card {
   width: 100%;
-  max-width: 220px;
-  height: 340px;
-  border: 2px solid #ccc;
+  max-width: 10px;
+  height: 200px; /* reduced height */
+  border: 1px solid #ccc; /* thinner border */
   border-radius: 12px;
-  padding: 12px;
+  padding: 4px; /* slightly tighter padding */
   box-sizing: border-box;
   page-break-inside: avoid;
   display: flex;
@@ -666,12 +672,12 @@ function PropertyDetailPage(props) {
             }
           .meter-card hr {
   border: 1px solid var(--primary-blue);
-  margin: 6px 0;
+  margin: 2px 0;
 }
             .meter-image {
   border-radius: 10px;
   width: 100%;
-  height: 250px;
+  height: 130px; /* reduced image height */
   object-fit: cover;
   display: block;
   margin: auto;
@@ -685,7 +691,7 @@ function PropertyDetailPage(props) {
 }
          .meter-images-dual img {
   width: 68%;
-  height: 180px;
+  height: 150px;
   border-radius: 10px;
   object-fit: cover;
 }
@@ -829,19 +835,18 @@ function PropertyDetailPage(props) {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  margin: 30px 50px;
-  page-break-inside: avoid;
+  margin: 10px 10px;
   position: relative; /* Added for divider positioning */
 }
             .signature-box {
               flex: 1;
-              min-width: 280px;
+              min-width: 80px;
               height: auto;
               border: none;
               border-radius: 12px;
-              padding: 18px;
+              padding: 5px;
               text-align: center;
-              margin: 0 8px;
+              margin: 0 0px;
             }
               .signature-divider {
   width: 1px;
@@ -850,16 +855,16 @@ function PropertyDetailPage(props) {
   align-self: stretch;
 }
             .signature-title {
-              font-size: 12px;
+              font-size: 5px;
               font-weight: bold;
               color: black;
-              margin-top: 8px;
-              margin-bottom: 20px; /* Reduced margin */
+              margin-top: 2px;
+              margin-bottom: 5px; /* Reduced margin */
             }
             .signature-image {
-              width: 100%;
+              width: 20%;
               height: auto;
-              max-height: 280px;
+              max-height: 80px;
               object-fit: contain;
               border-radius: 10px;
               display: block;
@@ -869,12 +874,31 @@ function PropertyDetailPage(props) {
             .no-break {
               page-break-inside: avoid;
             }
+            /* Page helpers */
+            .page {
+              /* non-print safe default */
+            }
+            .page-avoid-break {
+              page-break-inside: avoid;
+              break-inside: avoid;
+            }
             @media print {
               body {
                 -webkit-print-color-adjust: exact;
-                margin: 20px; /* Further adjusted for print */
+                margin: 10px; /* Further reduced for print */
                 font-size: 12px;
-                padding-top: 20px;
+                padding-top: 8px;
+              }
+              .page {
+                page-break-after: always;
+                break-after: page;
+              }
+              /* Ensure meters section stays on one page in print */
+              .meters-section {
+                page-break-before: avoid;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                break-inside: avoid;
               }
        .area-section {
     margin-top: 0; /* Remove margin-top for print */
@@ -883,12 +907,12 @@ function PropertyDetailPage(props) {
     page-break-inside: avoid;
   }
               .header {
-                padding: 15px 25px;
+                padding: 5px 5px;
                 margin-bottom: 10px; /* Further adjusted for print */
               }
               .logo {
-                height: 170px; /* Adjusted for print */
-                width: 380px; /* Adjusted for print */
+                height: 140px; /* Adjusted for print */
+                width: 300px; /* Adjusted for print */
               }
               .company-info {
                 font-size: 16px;
@@ -899,6 +923,8 @@ function PropertyDetailPage(props) {
               }
               .company-label {
                 min-width: 70px;
+              font-size: 12px;
+
               }
               .inspection-title {
                 font-size: 10px;
@@ -911,7 +937,7 @@ function PropertyDetailPage(props) {
               }
               .main-image {
                 width: 25%; /* Adjusted for print */
-                height: 180px; /* Adjusted for print */
+                height: 120px; /* Adjusted for print */
                 margin-bottom: 0;
               }
               .info-card {
@@ -922,10 +948,10 @@ function PropertyDetailPage(props) {
                 font-size: 10px;
               }
               .info-table td {
-                padding: 20px;
+                padding: 10px;
               }
               .summary-section {
-                margin: 20px 30px; /* Further adjusted for print */
+                margin: 20px 20px; /* Further adjusted for print */
                 padding: 18px;
                 min-height: 60px;
               }
@@ -959,9 +985,9 @@ function PropertyDetailPage(props) {
               }
            
               .meter-card {
-                height: 350px; /* Reduced height */
+                height: 300px; /* Reduced height */
               padding: 10px; /* Reduced padding */
-                margin-top: 10px;
+                margin-top: 4px;
                 width: 220px;
               }
               .meters-grid {
@@ -979,14 +1005,14 @@ function PropertyDetailPage(props) {
               }
               .meter-image {
                 width: 60%;
-                height: 150px;
+                height: 130px;
               }
               .meter-images-dual {
                 width: 60%;
               }
               .meter-images-dual img {
                 width: 60%;
-               height: 250px; /* Reduced height */
+               height: 220px; /* Reduced height */
               }
               .property-areas {
                 margin: 25px 40px; /* Further adjusted for print */
@@ -1041,21 +1067,21 @@ function PropertyDetailPage(props) {
                 font-size: 10px;
               }
               .signatures {
-                gap: 40px;
-                margin: 25px 40px; /* Further adjusted for print */
+                gap: 10px;
+                margin: 5px 40px; /* Further adjusted for print */
               }
               .signature-box {
-                padding: 12px;
-                width: 300px;
-                height: 300px;
+                padding: 5px;
+                width: 100px;
+                height: 100px;
               }
               .signature-title {
-                font-size: 12px;
-                margin-bottom: 20px; /* Further adjusted for print */
+                font-size: 5px;
+                margin-bottom: 5px; /* Further adjusted for print */
               }
               .signature-image {
-                width: 200px;
-                height: 200px;
+                width: 50px;
+                height: 50px;
               }
             }
             @media (max-width: 998px) {
@@ -1072,12 +1098,12 @@ function PropertyDetailPage(props) {
                 font-size: 18px;
               }
               .header {
-                padding: 10px 15px;
+                padding: 5px 5px;
                 margin-bottom: 8px;
               }
               .logo {
-               height: 120px;
-                width: 300px;
+               height: 100px;
+                width: 200px;
               }
               .company-info {
                 font-size: 18px;
@@ -1088,6 +1114,8 @@ function PropertyDetailPage(props) {
               }
               .company-label {
                 min-width: 90px;
+              font-size: 12px;
+
               }
               .inspection-title {
                 font-size: 12px;
@@ -1100,7 +1128,7 @@ function PropertyDetailPage(props) {
               }
               .main-image {
                 width: 50%;
-                height: 300px;
+                height: 180px;
                 margin-bottom: 5px;
               }
               .info-card {
@@ -1111,7 +1139,7 @@ function PropertyDetailPage(props) {
                 font-size: 10px;
               }
               .info-table td {
-                padding: 10px !important;
+                padding: 5px , 0px !important;
               }
               .summary-section {
                 margin: 25px 20px;
@@ -1150,10 +1178,10 @@ function PropertyDetailPage(props) {
                 gap: 25px;
               }
               .meter-card {
-                padding: 12px;
-                height: 300px;
+                padding: 8px;
+                height: 250px;
                 max-width: 140%;
-                margin-top: 15px;
+                margin-top: 8px;
               }
               .meter-header {
                 margin: 8px 20px 6px 10px;
@@ -1166,14 +1194,14 @@ function PropertyDetailPage(props) {
               }
               .meter-image {
                 width: 70%;
-                height: 200px;
+                height: 170px;
               }
               .meter-images-dual {
                 width: 70%;
               }
               .meter-images-dual img {
                 width: 70%;
-                height: 200px;
+                height: 170px;
               }
               .property-areas {
                 margin: 35px 20px;
@@ -1226,25 +1254,26 @@ function PropertyDetailPage(props) {
               }
               .signatures {
                 gap: 30px;
-                margin: 35px 20px;
+                margin: 5px 5px;
               }
               .signature-box {
-                padding: 12px;
-                width: 100%;
-                height: 380px;
+                padding: 5px;
+                width: 30%;
+                height: 180px;
               }
               .signature-title {
-                font-size: 14px;
-                margin-bottom: 25px;
+                font-size: 5px;
+                margin-bottom: 5px;
               }
               .signature-image {
-                width: 100%;
-                height: 280px;
+                width: 30%;
+                height: 50px;
               }
             }
           </style>
         </head>
         <body>
+          <div class="page">
           <header>
             <div class="header no-break">
               <img class="logo" src="${logoImg || PLACEHOLDER_IMAGE}" alt="Company Logo" />
@@ -1279,28 +1308,28 @@ function PropertyDetailPage(props) {
             <div class="info-card">
               <table class="info-table">
                 <tr>
-                  <td class="label" style="font-size: 15px;" >Inspected By</td>
-                  <td class="value" style="font-size: 12px;">${propertyData?.inspector_name || "Inspector Name"}</td>
+                  <td class="label" style="font-size: 12px;" >Inspected By</td>
+                  <td class="value" style="font-size: 10px;">${propertyData?.inspector_name || "Inspector Name"}</td>
                 </tr>
                 <tr>
-                  <td class="label" style="font-size: 15px;" >Tenants Name</td>
-                  <td class="value" style="font-size: 12px;" >${propertyData?.tenant_name || "Tenant Name"}</td>
+                  <td class="label" style="font-size: 12px;" >Tenants Name</td>
+                  <td class="value" style="font-size: 10px;" >${propertyData?.tenant_name || "Tenant Name"}</td>
                 </tr>
                 <tr>
-                  <td class="label" style="font-size: 15px;" >Date of Inspection</td>
-                  <td class="value" style="font-size: 12px;">${formatDate(propertyData?.inspection_date)}</td>
+                  <td class="label" style="font-size: 12px;" >Date of Inspection</td>
+                  <td class="value" style="font-size: 10px;">${formatDate(propertyData?.inspection_date)}</td>
                 </tr>
                 <tr>
-                  <td class="label" style="font-size: 15px;">EPC Expiry Date</td>
-                  <td class="value" style="font-size: 12px;" >${formatDate(propertyData?.epc_expiry_date)}</td>
+                  <td class="label" style="font-size: 12px;">EPC Expiry Date</td>
+                  <td class="value" style="font-size: 10px;" >${formatDate(propertyData?.epc_expiry_date)}</td>
                 </tr>
                 <tr>
-                  <td class="label" style="font-size: 15px;">Gas Safety Cert Expiry Date</td>
-                  <td class="value" style="font-size: 12px;">${formatDate(propertyData?.gas_safety_certificate_exp_date)}</td>
+                  <td class="label" style="font-size: 12px;">Gas Safety Cert Expiry Date</td>
+                  <td class="value" style="font-size: 10px;">${formatDate(propertyData?.gas_safety_certificate_exp_date)}</td>
                 </tr>
                 <tr>
-                  <td class="label" style="font-size: 15px;">EICR Expiry Date</td>
-                  <td class="value" style="font-size: 12px;">${formatDate(propertyData?.eicr_expiry_date)}</td>
+                  <td class="label" style="font-size: 12px;">EICR Expiry Date</td>
+                  <td class="value" style="font-size: 10px;">${formatDate(propertyData?.eicr_expiry_date)}</td>
                 </tr>
               </table>
             </div>
@@ -1310,8 +1339,10 @@ function PropertyDetailPage(props) {
             <div class="summary-title" style="font-size: 20px;">Summary</div>
             <div class="summary-text">${propertyData?.final_remarks || "Property inspection summary and key findings."}</div>
           </div>
+          </div>
 
-          <div class="meters-section">
+          <div class="page">
+          <div class="meters-section no-break">
   <div class="meters-grid">
 
     ${propertyData?.gas_meter
@@ -1396,16 +1427,14 @@ function PropertyDetailPage(props) {
 
   </div>
 </div>
-          <div class="property-areas">
+          </div>
+          <div class="page">
+          <div class="property-areas no-break">
             ${propertyAreasHTML}
           </div>
-<div class="advice-title" style="color: white; text-align: center;">
-  fafdasdfasdfadsfasdfasdf
-</div>
-  <div class="advice-title" style="color: white; text-align: center;">
-  fafdasdfasdfadsfasdfasdf
-</div>
-         <div class="advice-section" style="padding-top: 20px;">
+          </div>
+         <div class="page">
+         <div class="advice-section no-break" style="padding-top: 60px;">
             <div class="advice-card no-break">
               <div class="advice-title">Advice for Tenant:</div>
               <div class="advice-text">${propertyData?.advised_tenant_to || "No specific advice for tenant."}</div>
@@ -1417,7 +1446,7 @@ function PropertyDetailPage(props) {
               <hr />
             </div>
           </div>
-          <div class="important-info">
+          <div class="important-info no-break" style="margin-top: 30px;">
             <div class="section-title">Important Information</div>
             <div class="info-item no-break">
               <div class="info-subtitle">What is an Inventory Check-In Report?</div>
@@ -1449,12 +1478,7 @@ function PropertyDetailPage(props) {
                 Whilst every effort is made to ensure objectivity and accuracy, the Inventory Check-In Report provides no guarantee of the adequacy, compliance with standards or safety of any contents or equipment. The report will provide a record that such items exist in the property as at the date of the Inventory Check-In Report and the superficial condition of same. The report is not a building survey, a structural survey or a valuation, will not necessarily mention structural defects and does not give any advice on the cost of any repair work, or the types of repair which should be used.
               </div>
             </div>
-<div class="advice-title" style="color: white; text-align: center;">
-  fafdasdfasdfadsfasdfasdf
-</div>
-<div class="advice-title" style="color: white; text-align: center;">
-  fafdasdfasdfadsfasdfasdf
-</div>
+          
             <div class="info-item no-break">
               <div class="info-subtitle">What is inspected and not inspected?</div>
               <div class="info-text">
@@ -1474,55 +1498,85 @@ function PropertyDetailPage(props) {
               </div>
             </div>
           </div>
-         <div class="signatures no-break" style="display: flex; align-items: center; gap: 20px;">
-         <div class="signature-box">
-    <div class="signature-title">Inspector's Signature</div>
-    <div style="display: flex; justify-content: center; align-items: center; height: auto; min-height: 100px;">
-      ${inspectorSignature ? `<img class="signature-image" src="${inspectorSignature}" alt="Inspector Signature" />` : '<div style="height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 25px;">No signature available</div>'}
-    </div>
+          <div class="signature-box">
+            <div class="signature-title">Inspector's Signature</div>
+             <div style="display: flex; justify-content: center; align-items: center; height: auto; min-height: 50px;">
+           ${inspectorSignature ? `<img class="signature-image" src="${inspectorSignature}" alt="Inspector Signature" />` : '<div style="height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 25px;">No signature available</div>'}
   </div>
 </div>
+          </div>
 
         </body>
         </html>
       `
-      console.log("HTML Content Size:", htmlContent.length / (1024 * 1024), "MB") // Log size for debugging
-      const options = {
-        html: htmlContent,
-        fileName: generateFileName(propertyData?.inspection_date),
-        directory: "Documents",
-        base64: true,
-      }
-      const file = await RNHTMLtoPDF.convert(options)
-      if (!file.base64) {
-        throw new Error("PDF base64 data not generated")
-      }
-      // const folderPath = `${RNFS.DownloadDirectoryPath}/InventoryWiseApp`
-      const folderPath =
-  Platform.OS === "android"
-    ? `${RNFS.DownloadDirectoryPath}/InventoryWiseApp`
-    : `${RNFS.DocumentDirectoryPath}/InventoryWiseApp`
-
-      const fileExists = await RNFS.exists(folderPath)
-      if (!fileExists) {
-        await RNFS.mkdir(folderPath)
-      }
-      // Save file directly
-      const finalPath = `${folderPath}/${options.fileName}.pdf`
-      await RNFS.writeFile(finalPath, file.base64, "base64")
-      Alert.alert("PDF Saved Successfully", `File saved to:\n${finalPath}`, [{ text: "OK" }])
-      // Optionally open the PDF after saving
-      // FileViewer.open(finalPath).catch(error => {
-      //   console.error("Failed to open PDF:", error);
-      //   Alert.alert("Error", "Could not open PDF file.");
-      // });
-    } catch (err) {
-      console.error("PDF Error:", err)
-      Alert.alert("Error", err.message || "Failed to generate PDF. Check console for details.")
-    } finally {
-      dispatch(LoaderAction.LoaderFalse())
+      console.log("HTML Content Size:", htmlContent.length / (1024 * 1024), "MB");
+    
+    const fileName = generateFileName(propertyData?.inspection_date);
+    
+    const options = {
+      html: htmlContent,
+      fileName: fileName,
+      directory: Platform.OS === 'ios' ? 'Documents' : 'Download',
+      base64: true,
+    };
+    
+    const file = await RNHTMLtoPDF.convert(options);
+    
+    if (!file.base64) {
+      throw new Error("PDF base64 data not generated");
     }
+
+    if (Platform.OS === 'android') {
+      // Android: Save to Downloads/InventoryWiseApp
+      const folderPath = `${RNFS.DownloadDirectoryPath}/InventoryWiseApp`;
+      const fileExists = await RNFS.exists(folderPath);
+      
+      if (!fileExists) {
+        await RNFS.mkdir(folderPath);
+      }
+      
+      const finalPath = `${folderPath}/${fileName}.pdf`;
+      await RNFS.writeFile(finalPath, file.base64, "base64");
+      
+      try {
+        await Share.open({
+          title: fileName,
+          message: 'InventoryWise Inspection Report',
+          url: `file://${finalPath}`,
+          type: 'application/pdf',
+          showAppsToView: true,
+        });
+      } catch (shareError) {
+        console.error('Share error (Android):', shareError);
+      }
+      
+      Alert.alert("PDF Saved Successfully", `File saved to:\n${finalPath}`, [{ text: "OK" }]);
+      
+    } else {
+      // iOS: Save directly to Documents root for file sharing visibility
+      const finalPath = `${RNFS.DocumentDirectoryPath}/${fileName}.pdf`;
+      await RNFS.writeFile(finalPath, file.base64, "base64");
+      
+      try {
+        await Share.open({
+          title: fileName,
+          message: 'InventoryWise Inspection Report',
+          url: `file://${finalPath}`,
+          type: 'application/pdf',
+          showAppsToView: true,
+        });
+      } catch (shareError) {
+        console.error('Share error (iOS):', shareError);
+      }
+    }
+    
+  } catch (err) {
+    console.error("PDF Error:", err);
+    Alert.alert("Error", err.message || "Failed to generate PDF. Check console for details.");
+  } finally {
+    dispatch(LoaderAction.LoaderFalse());
   }
+};
   if (loading) {
     return (
       <SafeAreaView style={styles.container}>

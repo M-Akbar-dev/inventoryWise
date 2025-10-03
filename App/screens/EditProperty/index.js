@@ -11,6 +11,7 @@ import {
     FlatList,
     BackHandler,
     TextInput,
+    Platform,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -27,6 +28,7 @@ import { LoaderAction } from '../../redux/Actions';
 import AlertMiddleware from '../../redux/Middlewares/AlertMiddleware';
 import { MAIN_SCREENS } from '../../constants/screens';
 import moment from 'moment';
+import { requestCameraPermission, requestGalleryPermission } from '../../Component/PermissionsHandler/PermissionsHandler';
 
 const REPORT_TYPES = [
     'Inventory Report',
@@ -245,12 +247,12 @@ const EditProperty = ({ navigation, route }) => {
         };
 
         const fieldDefaults = {
-            frontSideAspects: { walls: 'Fair', windows: 'Fair', lawn_drive_way: 'Fair', doors: 'Fair', roof_guttering: 'Fair' , hedges : 'Fair' },
-            entranceHalls: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair' ,sockets_switches :"Fair"},
+            frontSideAspects: { walls: 'Fair', windows: 'Fair', lawn_drive_way: 'Fair', doors: 'Fair', roof_guttering: 'Fair', hedges: 'Fair' },
+            entranceHalls: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair', sockets_switches: "Fair" },
             livingRooms: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', sockets_switches: "Fair" },
             kitchens: { walls: 'Fair', units: 'Fair', appliances: 'Fair', doors: 'Fair', floor: 'Fair', ceiling: 'Fair', sockets_switches: "Fair" },
             rearGardens: { wall_fence: 'Fair', lawn: 'Fair', plants: 'Fair', structures: 'Fair' },
-            landings: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair' , sockets_switches : 'Fair'},
+            landings: { walls: 'Fair', windows: 'Fair', ceiling: 'Fair', floor: 'Fair', doors: 'Fair', sockets_switches: 'Fair' },
             bedrooms: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', sockets_switches: "Fair" },
             bathrooms: { walls: 'Fair', ceiling: 'Fair', windows: 'Fair', floor: 'Fair', doors: 'Fair', fixtures: 'Fair', bath_shower_set: 'Fair', sockets_switches: "Fair" },
         };
@@ -577,12 +579,12 @@ const EditProperty = ({ navigation, route }) => {
             Object.entries(roomSections).forEach(([sectionKey, rooms]) => {
                 rooms.forEach((room) => {
                     const fieldMappings = {
-                        frontSideAspects: ['walls', 'windows', 'lawn_drive_way', 'doors', "roof_guttering" , "hedges"],
-                        entranceHalls: ['walls', 'windows', 'ceiling', 'floor', 'doors' , 'sockets_switches'],
+                        frontSideAspects: ['walls', 'windows', 'lawn_drive_way', 'doors', "roof_guttering", "hedges"],
+                        entranceHalls: ['walls', 'windows', 'ceiling', 'floor', 'doors', 'sockets_switches'],
                         livingRooms: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'sockets_switches'],
                         kitchens: ['walls', 'units', 'appliances', 'doors', 'floor', 'ceiling', 'sockets_switches'],
                         rearGardens: ['wall_fence', 'lawn', 'plants', 'structures'],
-                        landings: ['walls', 'windows', 'ceiling', 'floor', 'doors' , 'sockets_switches'],
+                        landings: ['walls', 'windows', 'ceiling', 'floor', 'doors', 'sockets_switches'],
                         bedrooms: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'sockets_switches'],
                         bathrooms: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'fixtures', 'bath_shower_set', 'sockets_switches'],
                     };
@@ -737,35 +739,56 @@ const EditProperty = ({ navigation, route }) => {
 
     const handleHideAlert = () => setAlertVisible(false);
 
-    const requestCameraPermission = async () => {
-        return true;
-    };
+    // const requestCameraPermission = async () => {
+    //     return true;
+    // };
 
     const openCamera = async () => {
+        console.log('=== Camera Permission Debug ===');
+        console.log('Platform:', Platform.OS);
+        
         const hasPermission = await requestCameraPermission();
+        console.log('Final permission result:', hasPermission);
+        
         if (hasPermission) {
-            launchCamera({ mediaType: 'photo' }, handleImageUpload);
+          console.log('Launching camera...');
+          launchCamera({ mediaType: 'photo', saveToPhotos: true }, (response) => {
+            console.log('Camera response:', response);
+            handleImageUpload(response);
+          });
         } else {
-            Alert.alert('Permission Denied', 'Camera permission is required to take photos.');
+          console.log('Permission denied, showing alert');
+          Alert.alert('Permission Denied', 'Camera permission is required to take photos.');
         }
     };
 
     const openGallery = async () => {
+    const hasPermission = await requestGalleryPermission();
         const singleImageFeatures = ['prePaidElectricMeter', 'prePaidGasMeter', 'waterMeter', 'coAlarm'];
         const selectionLimit = currentImageType === 'main' || singleImageFeatures.includes(currentImageType) ? 1 : currentImageType === 'smokeAlarm' ? 2 : 6;
-      
+
         launchImageLibrary(
-          {
-            mediaType: 'photo',
-            selectionLimit,
-            includeExtra: true,
-          },
-          handleImageUpload
+            {
+                mediaType: 'photo',
+                selectionLimit,
+                includeExtra: true,
+            },
+            handleImageUpload
         );
-      };
+    };
 
     const validateImage = (asset) => {
-        const validFormats = ['image/jpeg', 'image/png'];
+        const validFormats = [
+            'image/jpeg',
+            'image/jpg',        // .jpg, .jpeg
+            'image/png',          // .png
+            'image/gif',          // .gif (optional)
+            'image/webp',         // .webp
+            'image/heic',         // iPhone default (HEIC)
+            'image/heif',         // HEIF variant
+            'image/tiff',         // .tif, .tiff
+            'image/bmp',          // .bmp
+        ];
         const maxSize = 30 * 1024 * 1024;
 
         if (!validFormats.includes(asset.type)) {
@@ -820,103 +843,101 @@ const EditProperty = ({ navigation, route }) => {
 
     const handleImageUpload = async (response) => {
         if (response.didCancel || response.errorCode) return;
-      
+
         try {
-          const maxMainImages = 1;
-          const maxFeatureImages = currentImageType === 'smokeAlarm' ? 2 : 1; // Allow 2 images for smokeAlarm
-          const maxRoomImages = 6;
-      
-          let currentImageCount = 0;
-          if (currentImageType === 'main') {
-            currentImageCount = images.main.length;
-            if (currentImageCount >= maxMainImages) {
-              Alert.alert('Limit Reached', 'Only one main picture is allowed.');
-              return;
+            const maxMainImages = 1;
+            const maxFeatureImages = currentImageType === 'smokeAlarm' ? 2 : 1; // Allow 2 images for smokeAlarm
+            const maxRoomImages = 6;
+
+            let currentImageCount = 0;
+            if (currentImageType === 'main') {
+                currentImageCount = images.main.length;
+                if (currentImageCount >= maxMainImages) {
+                    Alert.alert('Limit Reached', 'Only one main picture is allowed.');
+                    return;
+                }
+            } else if (currentImageType === 'room') {
+                const pluralMap = {
+                    frontSideAspect: 'frontSideAspects',
+                    hall: 'entranceHalls',
+                    livingRoom: 'livingRooms',
+                    kitchen: 'kitchens',
+                    garden: 'rearGardens',
+                    landing: 'landings',
+                    bedroom: 'bedrooms',
+                    bathroom: 'bathrooms',
+                };
+                const room = roomSections[pluralMap[currentRoomType]]?.find((r) => r.id === currentRoomId);
+                currentImageCount = room?.images.length || 0;
+                if (currentImageCount >= maxRoomImages) {
+                    Alert.alert('Limit Reached', `Maximum five images allowed for ${room.name}.`);
+                    return;
+                }
+            } else if (TOGGLE_ITEMS.some((item) => item.key === currentImageType)) {
+                currentImageCount = images.features[currentImageType]?.length || 0;
+                if (currentImageCount >= maxFeatureImages) {
+                    Alert.alert(
+                        'Limit Reached',
+                        `Maximum ${maxFeatureImages} image${maxFeatureImages > 1 ? 's' : ''} allowed for ${TOGGLE_ITEMS.find((item) => item.key === currentImageType).label
+                        }.`
+                    );
+                    return;
+                }
             }
-          } else if (currentImageType === 'room') {
-            const pluralMap = {
-              frontSideAspect: 'frontSideAspects',
-              hall: 'entranceHalls',
-              livingRoom: 'livingRooms',
-              kitchen: 'kitchens',
-              garden: 'rearGardens',
-              landing: 'landings',
-              bedroom: 'bedrooms',
-              bathroom: 'bathrooms',
-            };
-            const room = roomSections[pluralMap[currentRoomType]]?.find((r) => r.id === currentRoomId);
-            currentImageCount = room?.images.length || 0;
-            if (currentImageCount >= maxRoomImages) {
-              Alert.alert('Limit Reached', `Maximum five images allowed for ${room.name}.`);
-              return;
+
+            let allowedImages = response.assets;
+            if (currentImageType === 'main') {
+                allowedImages = response.assets.slice(0, maxMainImages - currentImageCount);
+            } else if (currentImageType === 'room') {
+                allowedImages = response.assets.slice(0, maxRoomImages - currentImageCount);
+            } else if (TOGGLE_ITEMS.some((item) => item.key === currentImageType)) {
+                allowedImages = response.assets.slice(0, maxFeatureImages - currentImageCount);
             }
-          } else if (TOGGLE_ITEMS.some((item) => item.key === currentImageType)) {
-            currentImageCount = images.features[currentImageType]?.length || 0;
-            if (currentImageCount >= maxFeatureImages) {
-              Alert.alert(
-                'Limit Reached',
-                `Maximum ${maxFeatureImages} image${maxFeatureImages > 1 ? 's' : ''} allowed for ${
-                  TOGGLE_ITEMS.find((item) => item.key === currentImageType).label
-                }.`
-              );
-              return;
+
+            if (allowedImages.length === 0) return;
+
+            const uploadedUrls = await uploadImages(allowedImages, token, dispatch);
+
+            if (currentImageType === 'main') {
+                setImages((prev) => ({ ...prev, main: [...prev.main, ...uploadedUrls] }));
+            } else if (currentImageType === 'room') {
+                const pluralMap = {
+                    frontSideAspect: 'frontSideAspects',
+                    hall: 'entranceHalls',
+                    livingRoom: 'livingRooms',
+                    kitchen: 'kitchens',
+                    garden: 'rearGardens',
+                    landing: 'landings',
+                    bedroom: 'bedrooms',
+                    bathroom: 'bathrooms',
+                };
+                setRoomSections((prev) => ({
+                    ...prev,
+                    [pluralMap[currentRoomType]]: prev[pluralMap[currentRoomType]].map((room) =>
+                        room.id === currentRoomId ? { ...room, images: [...room.images, ...uploadedUrls] } : room
+                    ),
+                }));
+            } else {
+                setImages((prev) => ({
+                    ...prev,
+                    features: {
+                        ...prev.features,
+                        [currentImageType]: [...(prev.features[currentImageType] || []), ...uploadedUrls],
+                    },
+                }));
             }
-          }
-      
-          let allowedImages = response.assets;
-          if (currentImageType === 'main') {
-            allowedImages = response.assets.slice(0, maxMainImages - currentImageCount);
-          } else if (currentImageType === 'room') {
-            allowedImages = response.assets.slice(0, maxRoomImages - currentImageCount);
-          } else if (TOGGLE_ITEMS.some((item) => item.key === currentImageType)) {
-            allowedImages = response.assets.slice(0, maxFeatureImages - currentImageCount);
-          }
-      
-          if (allowedImages.length === 0) return;
-      
-          const uploadedUrls = await uploadImages(allowedImages, token, dispatch);
-      
-          if (currentImageType === 'main') {
-            setImages((prev) => ({ ...prev, main: [...prev.main, ...uploadedUrls] }));
-          } else if (currentImageType === 'room') {
-            const pluralMap = {
-              frontSideAspect: 'frontSideAspects',
-              hall: 'entranceHalls',
-              livingRoom: 'livingRooms',
-              kitchen: 'kitchens',
-              garden: 'rearGardens',
-              landing: 'landings',
-              bedroom: 'bedrooms',
-              bathroom: 'bathrooms',
-            };
-            setRoomSections((prev) => ({
-              ...prev,
-              [pluralMap[currentRoomType]]: prev[pluralMap[currentRoomType]].map((room) =>
-                room.id === currentRoomId ? { ...room, images: [...room.images, ...uploadedUrls] } : room
-              ),
-            }));
-          } else {
-            setImages((prev) => ({
-              ...prev,
-              features: {
-                ...prev.features,
-                [currentImageType]: [...(prev.features[currentImageType] || []), ...uploadedUrls],
-              },
-            }));
-          }
-      
-          if (response.assets.length > allowedImages.length) {
-            Alert.alert(
-              'Partial Upload',
-              `Only ${allowedImages.length} image${allowedImages.length > 1 ? 's' : ''} were uploaded due to the ${
-                currentImageType === 'main' || currentImageType !== 'smokeAlarm' ? '1-image' : '2-image'
-              } limit.`
-            );
-          }
+
+            if (response.assets.length > allowedImages.length) {
+                Alert.alert(
+                    'Partial Upload',
+                    `Only ${allowedImages.length} image${allowedImages.length > 1 ? 's' : ''} were uploaded due to the ${currentImageType === 'main' || currentImageType !== 'smokeAlarm' ? '1-image' : '2-image'
+                    } limit.`
+                );
+            }
         } catch (error) {
-          Alert.alert('Upload Failed', error.message || 'Failed to upload images. Please try again.');
+            Alert.alert('Upload Failed', error.message || 'Failed to upload images. Please try again.');
         }
-      };
+    };
 
     const debounceToggle = useCallback(
         (key, value) => {
@@ -1078,146 +1099,146 @@ const EditProperty = ({ navigation, route }) => {
 
     const renderToggleSection = (label, key) => (
         <View style={styles.toggleContainer}>
-          <View style={styles.toggleHeader}>
-            <Text style={styles.toggleLabel}>{label}</Text>
-            <View style={styles.toggleGroup}>
-              {['Yes', 'No'].map((option) => (
-                <TouchableOpacity
-                  key={option}
-                  style={[
-                    styles.toggleButton,
-                    formData[key] === (option === 'Yes') && styles.selectedToggle,
-                    formErrors[key] && styles.errorBorder,
-                  ]}
-                  onPress={() => debounceToggle(key, option)}
-                >
-                  <Text
-                    style={[
-                      styles.toggleText,
-                      formData[key] === (option === 'Yes') && styles.selectedToggleText,
-                    ]}
-                  >
-                    {option}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </View>
-          <View style={styles.meterImageContainer}>
-            <Text style={styles.imageUploadLabel}>Upload {label}</Text>
-            {key === 'smokeAlarm' ? (
-              <View style={styles.smokeAlarmImageContainer}>
-                {['Front', 'Back'].map((position, index) => (
-                  <View key={`${key}_${position}`} style={styles.smokeAlarmImageSlot}>
-                    <Text style={styles.smokeAlarmLabel}>{position}</Text>
-                    {images.features[key][index] ? (
-                      <View style={styles.imageContainer}>
-                        <Image
-                          source={{ uri: images.features[key][index] }}
-                          style={styles.meterImagePreview}
-                          resizeMode="contain"
-                        />
+            <View style={styles.toggleHeader}>
+                <Text style={styles.toggleLabel}>{label}</Text>
+                <View style={styles.toggleGroup}>
+                    {['Yes', 'No'].map((option) => (
                         <TouchableOpacity
-                          style={styles.cancelIcon}
-                          onPress={() => handleRemoveImage(key, index)}
+                            key={option}
+                            style={[
+                                styles.toggleButton,
+                                formData[key] === (option === 'Yes') && styles.selectedToggle,
+                                formErrors[key] && styles.errorBorder,
+                            ]}
+                            onPress={() => debounceToggle(key, option)}
                         >
-                          <VectorIconComponent
-                            name="closecircle"
-                            size={20}
-                            color={AppStyles.colorSet.appRed}
-                            type={ICON_TYPES.AntDesign}
-                          />
+                            <Text
+                                style={[
+                                    styles.toggleText,
+                                    formData[key] === (option === 'Yes') && styles.selectedToggleText,
+                                ]}
+                            >
+                                {option}
+                            </Text>
                         </TouchableOpacity>
-                      </View>
-                    ) : (
-                      <TouchableOpacity
-                        style={[styles.meterImageButton, formErrors[`${key}Image`] && styles.imageError]}
-                        onPress={() => handleShowAlert(key)}
-                      >
-                        <VectorIconComponent
-                          name="camera"
-                          size={32}
-                          color={formErrors[`${key}Image`] ? AppStyles.colorSet.appRed : AppStyles.colorSet.appPrimaryColor}
-                          type={ICON_TYPES.FontAwesome}
-                        />
-                      </TouchableOpacity>
-                    )}
-                  </View>
-                ))}
-                {images.features[key].length < 2 && (
-                  <TouchableOpacity style={styles.uploadButton} onPress={() => handleShowAlert(key)}>
-                    <VectorIconComponent
-                      name="camera"
-                      size={24}
-                      color={AppStyles.colorSet.appPrimaryColor}
-                      type={ICON_TYPES.FontAwesome}
+                    ))}
+                </View>
+            </View>
+            <View style={styles.meterImageContainer}>
+                <Text style={styles.imageUploadLabel}>Upload {label}</Text>
+                {key === 'smokeAlarm' ? (
+                    <View style={styles.smokeAlarmImageContainer}>
+                        {['Front', 'Back'].map((position, index) => (
+                            <View key={`${key}_${position}`} style={styles.smokeAlarmImageSlot}>
+                                <Text style={styles.smokeAlarmLabel}>{position}</Text>
+                                {images.features[key][index] ? (
+                                    <View style={styles.imageContainer}>
+                                        <Image
+                                            source={{ uri: images.features[key][index] }}
+                                            style={styles.meterImagePreview}
+                                            resizeMode="contain"
+                                        />
+                                        <TouchableOpacity
+                                            style={styles.cancelIcon}
+                                            onPress={() => handleRemoveImage(key, index)}
+                                        >
+                                            <VectorIconComponent
+                                                name="closecircle"
+                                                size={20}
+                                                color={AppStyles.colorSet.appRed}
+                                                type={ICON_TYPES.AntDesign}
+                                            />
+                                        </TouchableOpacity>
+                                    </View>
+                                ) : (
+                                    <TouchableOpacity
+                                        style={[styles.meterImageButton, formErrors[`${key}Image`] && styles.imageError]}
+                                        onPress={() => handleShowAlert(key)}
+                                    >
+                                        <VectorIconComponent
+                                            name="camera"
+                                            size={32}
+                                            color={formErrors[`${key}Image`] ? AppStyles.colorSet.appRed : AppStyles.colorSet.appPrimaryColor}
+                                            type={ICON_TYPES.FontAwesome}
+                                        />
+                                    </TouchableOpacity>
+                                )}
+                            </View>
+                        ))}
+                        {images.features[key].length < 2 && (
+                            <TouchableOpacity style={styles.uploadButton} onPress={() => handleShowAlert(key)}>
+                                <VectorIconComponent
+                                    name="camera"
+                                    size={24}
+                                    color={AppStyles.colorSet.appPrimaryColor}
+                                    type={ICON_TYPES.FontAwesome}
+                                />
+                                <Text style={styles.imageCountText}>{images.features[key].length}/2</Text>
+                            </TouchableOpacity>
+                        )}
+                    </View>
+                ) : (
+                    <FlatList
+                        horizontal
+                        data={images.features[key]}
+                        keyExtractor={(uri, index) => `${key}_${index}_${uri.replace(/[^a-zA-Z0-9]/g, '')}`}
+                        renderItem={({ item: uri, index }) => (
+                            <View style={styles.imageContainer}>
+                                <Image source={{ uri }} style={styles.meterImagePreview} resizeMode="contain" />
+                                <TouchableOpacity
+                                    style={styles.cancelIcon}
+                                    onPress={() => handleRemoveImage(key, index)}
+                                >
+                                    <VectorIconComponent
+                                        name="closecircle"
+                                        size={20}
+                                        color={AppStyles.colorSet.appRed}
+                                        type={ICON_TYPES.AntDesign}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        )}
+                        ListEmptyComponent={() => (
+                            <TouchableOpacity
+                                style={[styles.meterImageButton, formErrors[`${key}Image`] && styles.imageError]}
+                                onPress={() => handleShowAlert(key)}
+                            >
+                                <VectorIconComponent
+                                    name="camera"
+                                    size={32}
+                                    color={formErrors[`${key}Image`] ? AppStyles.colorSet.appRed : AppStyles.colorSet.appPrimaryColor}
+                                    type={ICON_TYPES.FontAwesome}
+                                />
+                            </TouchableOpacity>
+                        )}
+                        ListFooterComponent={() => (
+                            images.features[key].length < 1 ? (
+                                <TouchableOpacity style={styles.uploadButton} onPress={() => handleShowAlert(key)}>
+                                    <VectorIconComponent
+                                        name="camera"
+                                        size={24}
+                                        color={AppStyles.colorSet.appPrimaryColor}
+                                        type={ICON_TYPES.FontAwesome}
+                                    />
+                                    <Text style={styles.imageCountText}>{images.features[key].length}/1</Text>
+                                </TouchableOpacity>
+                            ) : null
+                        )}
                     />
-                    <Text style={styles.imageCountText}>{images.features[key].length}/2</Text>
-                  </TouchableOpacity>
                 )}
-              </View>
-            ) : (
-              <FlatList
-                horizontal
-                data={images.features[key]}
-                keyExtractor={(uri, index) => `${key}_${index}_${uri.replace(/[^a-zA-Z0-9]/g, '')}`}
-                renderItem={({ item: uri, index }) => (
-                  <View style={styles.imageContainer}>
-                    <Image source={{ uri }} style={styles.meterImagePreview} resizeMode="contain" />
-                    <TouchableOpacity
-                      style={styles.cancelIcon}
-                      onPress={() => handleRemoveImage(key, index)}
-                    >
-                      <VectorIconComponent
-                        name="closecircle"
-                        size={20}
-                        color={AppStyles.colorSet.appRed}
-                        type={ICON_TYPES.AntDesign}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                )}
-                ListEmptyComponent={() => (
-                  <TouchableOpacity
-                    style={[styles.meterImageButton, formErrors[`${key}Image`] && styles.imageError]}
-                    onPress={() => handleShowAlert(key)}
-                  >
-                    <VectorIconComponent
-                      name="camera"
-                      size={32}
-                      color={formErrors[`${key}Image`] ? AppStyles.colorSet.appRed : AppStyles.colorSet.appPrimaryColor}
-                      type={ICON_TYPES.FontAwesome}
-                    />
-                  </TouchableOpacity>
-                )}
-                ListFooterComponent={() => (
-                  images.features[key].length < 1 ? (
-                    <TouchableOpacity style={styles.uploadButton} onPress={() => handleShowAlert(key)}>
-                      <VectorIconComponent
-                        name="camera"
-                        size={24}
-                        color={AppStyles.colorSet.appPrimaryColor}
-                        type={ICON_TYPES.FontAwesome}
-                      />
-                      <Text style={styles.imageCountText}>{images.features[key].length}/1</Text>
-                    </TouchableOpacity>
-                  ) : null
-                )}
-              />
-            )}
-            {formErrors[`${key}Image`] && <Text style={styles.errorText}>{formErrors[`${key}Image`]}</Text>}
-          </View>
+                {formErrors[`${key}Image`] && <Text style={styles.errorText}>{formErrors[`${key}Image`]}</Text>}
+            </View>
         </View>
-      );
+    );
 
     const renderRoomSection = (type, label, allowAdd = false) => {
         const fieldNames = {
-            frontSideAspect: ['walls', 'windows', 'lawn_drive_way', 'doors', "roof_guttering" , "hedges"],
-            hall: ['walls', 'windows', 'ceiling', 'floor', 'doors' ,'sockets_switches'],
+            frontSideAspect: ['walls', 'windows', 'lawn_drive_way', 'doors', "roof_guttering", "hedges"],
+            hall: ['walls', 'windows', 'ceiling', 'floor', 'doors', 'sockets_switches'],
             livingRoom: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'sockets_switches'],
             kitchen: ['walls', 'units', 'appliances', 'doors', 'floor', 'ceiling', 'sockets_switches'],
             garden: ['wall_fence', 'lawn', 'plants', 'structures'],
-            landing: ['walls', 'windows', 'ceiling', 'floor', 'doors' , 'sockets_switches'],
+            landing: ['walls', 'windows', 'ceiling', 'floor', 'doors', 'sockets_switches'],
             bedroom: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'sockets_switches'],
             bathroom: ['walls', 'ceiling', 'windows', 'floor', 'doors', 'fixtures', 'bath_shower_set', 'sockets_switches'],
         };
@@ -1496,6 +1517,7 @@ const EditProperty = ({ navigation, route }) => {
     );
 
     const body = () => (
+        <SafeAreaView>
         <ScrollView
             contentContainerStyle={styles.scrollContainer}
             showsVerticalScrollIndicator={false}
@@ -1529,6 +1551,7 @@ const EditProperty = ({ navigation, route }) => {
             )}
             {renderSignatureModal()}
         </ScrollView>
+        </SafeAreaView>
     );
 
     return body();

@@ -24,6 +24,30 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	
+	<!-- File Sharing Configuration - NEW -->
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	
+	<!-- Document Types - NEW -->
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>PDF Document</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.adobe.pdf</string>
+			</array>
+		</dict>
+	</array>
+	
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -31,8 +55,11 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	
+	<!-- Remove or fix empty location description -->
+	<!-- <key>NSLocationWhenInUseUsageDescription</key>
+	<string></string> -->
+	
 	<key>UIAppFonts</key>
 	<array>
 		<string>Inter_18pt-Black.ttf</string>
@@ -137,10 +164,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	 <key>NSCameraUsageDescription</key>
-    <string>This app needs access to your camera to take photos of property details.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>This app needs access to your photo library to select photos of property details to upload.</string>
-
+	
+	<!-- Camera and Photo Library Permissions -->
+	<key>NSCameraUsageDescription</key>
+	<string>InventoryWise needs camera access to take photos of inventory items and property details.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>InventoryWise needs access to your photo library to select photos of property details to upload.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>InventoryWise needs access to your photo library to select photos of property details to upload.</string>
 </dict>
 </plist>

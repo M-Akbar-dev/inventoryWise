@@ -19,7 +19,8 @@ import { useIsFocused } from '@react-navigation/native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import CustomListItem from '../customListItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { AuthAction } from '../../redux/Actions';
+import { AuthAction, LoaderAction } from '../../redux/Actions';
+import axios from 'axios';
 
 const UserDetails = props => {
     const { navigation } = props.props;
@@ -76,6 +77,34 @@ const CustomDrawer = props => {
 
     }
 
+    const deleteAccount = async (user, dispatch, navigation) => {
+        console.log(user, 'user in delete account')
+        dispatch(LoaderAction.LoaderTrue());
+        try {
+            const response = await axios.delete(
+                `https://api.inventorywise.co.uk/accounts/${user?.id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${user?.jwtToken}`,
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            console.log(response.data, 'response from delete account')
+            // After successful delete
+            dispatch(AuthAction.Logout());
+            navigation.navigate(MAIN_SCREENS.LOG_IN);
+        } catch (error) {
+            console.error('Delete error:', error.response?.data || error.message);
+            // Alert.alert('Error', 'Unable to delete account. Please try again.');
+            dispatch(AuthAction.Logout());
+            navigation.navigate(MAIN_SCREENS.LOG_IN);
+        } finally {
+            dispatch(LoaderAction.LoaderFalse());
+            dispatch(AuthAction.Logout());
+            navigation.navigate(MAIN_SCREENS.LOG_IN);
+        }
+    };
 
 
     useEffect(() => {
@@ -84,28 +113,6 @@ const CustomDrawer = props => {
             setIsShow(false);
         }
     }, [isFocused]);
-
-
-    // const selectImage = () => {
-    //     const options = {
-    //         mediaType: 'photo',
-    //         maxWidth: 300,
-    //         maxHeight: 300,
-    //         quality: 1,
-    //     };
-
-    //     launchImageLibrary(options, response => {
-    //         if (response.didCancel) {
-    //             console.log('User cancelled image picker');
-    //         } else if (response.errorCode) {
-    //             console.log('ImagePicker Error: ', response.errorMessage);
-    //         } else if (response.assets && response.assets.length > 0) {
-    //             const selectedImage = response.assets[0];
-    //             console.log(selectedImage, "?????")
-    //             setUserImage({ uri: selectedImage.uri });
-    //         }
-    //     });
-    // };
 
     return (
         <SafeAreaView style={styles.drawerItemContainer}>
@@ -116,25 +123,6 @@ const CustomDrawer = props => {
                 <Text style={[styles.nameTxt, { fontSize: 15, fontFamily: AppStyles.fontFamily.LatoBold }]}>{user?.email}</Text>
 
             </View>
-            {/* <CustomListItem
-        containerStyle={[
-          styles.customContainerStyle,
-          {
-            marginTop: MetricsMod.marginFifteen,
-          },
-        ]}
-
-        isLeftImage
-        imageName={Images.home}
-        text={'Home'}
-        textStyleContainer={[
-          styles.drawerTextStyle,
-          { color: AppStyles.colorSet.green, fontWeight: '300' },
-        ]}
-        leftImageStyle={styles.leftImageStyle}
-        onPress={() => navigation.navigate(MAIN_SCREENS.MAIN)}
-        isDivider
-      /> */}
             <ScrollView
                 style={styles.scrollContainer}
                 showsVerticalScrollIndicator={false}>
@@ -158,30 +146,6 @@ const CustomDrawer = props => {
                         onPress={() => navigation.navigate(MAIN_SCREENS.HOME)}
                         isDivider
                     />
-
-
-
-                    {/* <CustomListItem
-                        containerStyle={[
-                            styles.customContainerStyle,
-                            {
-                                marginTop: MetricsMod.marginFifteen,
-                            },
-                        ]}
-
-                        isLeftImage
-                        imageName={Images.RestPasswordImage}
-                        text={'ResetPassword'}
-                        textStyleContainer={[
-                            styles.drawerTextStyle,
-                            { color: AppStyles.colorSet.black, fontWeight: '600' },
-                        ]}
-                        leftImageStyle={styles.leftImageStyle}
-                        onPress={() => navigation.navigate(MAIN_SCREENS.RESET_PASSWORD)}
-                        isDivider
-                    /> */}
-
-
                     <CustomListItem
                         containerStyle={[
                             styles.customContainerStyle,
@@ -248,6 +212,49 @@ const CustomDrawer = props => {
 
                 </View>
             </ScrollView>
+            <CustomListItem
+                containerStyle={[
+                    styles.customContainerStyle1,
+                    {
+                        backgroundColor: AppStyles.colorSet.blue,
+                        marginBottom: MetricsMod.section,
+                    },
+                ]}
+                // isLeftImage
+                // imageName={Images.}
+                text={'Delete Account'}
+                textStyleContainer={[
+                    styles.drawerLogoutTextStyle2,
+                    { color: AppStyles.colorSet.white, fontWeight: 'bold' },
+                ]}
+
+                leftImageStyle={[
+                    styles.leftImageStyle,
+                    // { tintColor:  AppStyles.colorSet.white },
+                ]}
+                onPress={() => {
+                    Alert.alert(
+                        'Account Delete',
+                        'Are you sure you want to Delete Account?',
+                        [
+                            {
+                                text: 'Cancel',
+                                onPress: () => console.log('Cancel Pressed'),
+                                style: 'cancel',
+                            },
+                            {
+                                text: 'OK',
+                                onPress: () => deleteAccount(user, dispatch, navigation),
+                            },
+                        ],
+                        { cancelable: false }
+                    );
+                    // navigation.closeDrawer()
+
+                }}
+            />
+
+
             <CustomListItem
                 containerStyle={[
                     styles.customContainerStyle1,

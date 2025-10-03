@@ -89,12 +89,21 @@ const styles = StyleSheet.create({
 
   },
   drawerLogoutTextStyle:{
-
     fontWeight: '400',
     color: AppStyles.colorSet.green,
     fontSize: AppStyles.fontSet.normal,
     flex: 1,
     marginLeft:MetricsMod.sixty,
+     alignSelf:'center',
+     
+  },
+
+  drawerLogoutTextStyle2:{
+    fontWeight: '400',
+    color: AppStyles.colorSet.green,
+    fontSize: AppStyles.fontSet.normal,
+    flex: 1,
+    marginLeft:MetricsMod.thirty,
      alignSelf:'center',
      
   },

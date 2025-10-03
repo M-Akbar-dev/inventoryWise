@@ -1,28 +1,55 @@
 import { Alert, PermissionsAndroid, Platform } from 'react-native';
 
-import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions';
+import { request, PERMISSIONS, RESULTS } from 'react-native-permissions';
+
+// export const requestCameraPermission = async () => {
+//     try {
+//         if (Platform.OS === 'android') {
+//             const granted = await PermissionsAndroid.request(
+//                 PermissionsAndroid.PERMISSIONS.CAMERA,
+//                 {
+//                     title: 'Camera Permission',
+//                     message: 'This app needs camera access to take photos',
+//                     buttonNeutral: 'Ask Me Later',
+//                     buttonNegative: 'Cancel',
+//                     buttonPositive: 'OK',
+//                 },
+//             );
+//             return granted === PermissionsAndroid.RESULTS.GRANTED;
+//         }
+//         return true;
+//     } catch (err) {
+//         console.warn(err);
+//         return false;
+//     }
+// };
+
 
 export const requestCameraPermission = async () => {
     try {
-        if (Platform.OS === 'android') {
-            const granted = await PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.CAMERA,
-                {
-                    title: 'Camera Permission',
-                    message: 'This app needs camera access to take photos',
-                    buttonNeutral: 'Ask Me Later',
-                    buttonNegative: 'Cancel',
-                    buttonPositive: 'OK',
-                },
-            );
-            return granted === PermissionsAndroid.RESULTS.GRANTED;
-        }
-        return true;
+      if (Platform.OS === 'android') {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.CAMERA,
+          {
+            title: 'Camera Permission',
+            message: 'This app needs access to your camera to take photos',
+            buttonNeutral: 'Ask Me Later',
+            buttonNegative: 'Cancel',
+            buttonPositive: 'OK',
+          },
+        );
+        return granted === PermissionsAndroid.RESULTS.GRANTED;
+      } else {
+        const result = await request(PERMISSIONS.IOS.CAMERA);
+        console.log(result , "AS?D>FA?SF>A?SD")
+        return result === RESULTS.GRANTED;
+      }
     } catch (err) {
-        console.warn(err);
-        return false;
+      console.warn(err);
+      return false;
     }
-};
+  };
+
 
 export const requestGalleryPermission = async () => {
     try {

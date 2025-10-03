@@ -51,7 +51,7 @@ function PrivacyPolicy(props){
             <SafeAreaView style={styles.container}>
                 {renderBack()}
                 <WebView
-                 source={{ uri: 'https://yana.physicianmarketing.us/privacy-policy' }} 
+                 source={{ uri: 'https://www.inventorywise.co.uk/privacy-policy/' }} 
                  javaScriptEnabled={true}
                  userAgent="Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 

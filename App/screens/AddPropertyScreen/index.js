@@ -27,6 +27,7 @@ import { LoaderAction } from '../../redux/Actions';
 import AlertMiddleware from '../../redux/Middlewares/AlertMiddleware';
 import { MAIN_SCREENS } from '../../constants/screens';
 import moment from 'moment';
+import { requestCameraPermission, requestGalleryPermission } from '../../Component/PermissionsHandler/PermissionsHandler';
 
 const REPORT_TYPES = [
   'Inventory Report',
@@ -691,20 +692,32 @@ const AddPropertyScreen = ({ navigation }) => {
 
   const handleHideAlert = () => setAlertVisible(false);
 
-  const requestCameraPermission = async () => {
-    return true;
-  };
+  // const requestCameraPermission = async () => {
+  //   return true;
+  // };
 
   const openCamera = async () => {
+    console.log('=== Camera Permission Debug ===');
+    console.log('Platform:', Platform.OS);
+    
     const hasPermission = await requestCameraPermission();
+    console.log('Final permission result:', hasPermission);
+    
     if (hasPermission) {
-      launchCamera({ mediaType: 'photo' , saveToPhotos : true }, handleImageUpload);
+      console.log('Launching camera...');
+      launchCamera({ mediaType: 'photo', saveToPhotos: true }, (response) => {
+        console.log('Camera response:', response);
+        handleImageUpload(response);
+      });
     } else {
+      console.log('Permission denied, showing alert');
       Alert.alert('Permission Denied', 'Camera permission is required to take photos.');
     }
-  };
+};
 
   const openGallery = async () => {
+    const hasPermission = await requestGalleryPermission();
+
     const singleImageFeatures = ['prePaidElectricMeter', 'prePaidGasMeter', 'waterMeter', 'smokeAlarm', 'coAlarm'];
     const selectionLimit = currentImageType === 'main' || singleImageFeatures.includes(currentImageType) ? 1 : 6;
 
@@ -719,10 +732,21 @@ const AddPropertyScreen = ({ navigation }) => {
   };
 
   const validateImage = (asset) => {
-    const validFormats = ['image/jpeg', 'image/png'];
-    const maxSize = 30 * 1024 * 1024;
+    const validFormats = [
+      'image/jpeg',  
+      'image/jpg',        // .jpg, .jpeg
+      'image/png',          // .png
+      'image/gif',          // .gif (optional)
+      'image/webp',         // .webp
+      'image/heic',         // iPhone default (HEIC)
+      'image/heif',         // HEIF variant
+      'image/tiff',         // .tif, .tiff
+      'image/bmp',          // .bmp
+    ];
+        const maxSize = 30 * 1024 * 1024;
 
     if (!validFormats.includes(asset.type)) {
+      console.log(asset.type, "this is the type of the image")
       return { isValid: false, error: 'Only JPEG or PNG images are allowed.' };
     }
 
