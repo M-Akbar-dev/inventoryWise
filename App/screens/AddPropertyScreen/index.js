@@ -1312,7 +1312,7 @@ const AddPropertyScreen = ({ navigation }) => {
                   </View>
                 )}
                 ListFooterComponent={() => (
-                  room.images.length < 3 ? (
+                  room.images.length < 6 ? (
                     <TouchableOpacity
                       style={styles.uploadButton}
                       onPress={() => {

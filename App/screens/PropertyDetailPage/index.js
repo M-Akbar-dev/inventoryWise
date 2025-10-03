@@ -701,8 +701,8 @@ function PropertyDetailPage(props) {
               /* page-break-before: always; Removed to reduce blank pages */
             }
          .area-section {
-  margin-top: 0px;        /* 👈 Adds space above each area */
-  margin-bottom: 20px;     /* Already present – keeps spacing below */
+  margin-top: 0px !important;        /* 👈 Remove space above each area */
+  margin-bottom: 0px !important;     /* Remove spacing below */
   page-break-inside: avoid;
 }
             .area-title {
@@ -760,22 +760,34 @@ function PropertyDetailPage(props) {
               background-color: var(--light-blue) !important;
             }
             .area-images-container {
-              display: grid;
-              grid-template-columns: repeat(3, 1fr);
-            gap: 12px; /* Reduced gap */
-              margin-top: 8px; /* Reduced margin */
+              display: block !important;
+              grid-template-columns: repeat(3, 1fr) !important;
+              gap: 0px !important; /* Remove all gap */
+              margin-top: 19px !important; /* Add small top margin for spacing */
+              margin-bottom: 0 !important; /* Remove bottom margin */
+              margin-left: 0 !important;
+              margin-right: 0 !important;
+              padding: 0 !important; /* Remove all padding */
+              border: 0 !important;
+              outline: 0 !important;
+              box-sizing: border-box !important;
               page-break-inside: avoid;
             }
+             
             .area-image {
-              width: 100%;
-              max-width: 280px;
-              height: 200px; /* Kept consistent */
-              object-fit: contain;
-              border-style: solid;
-              border-color: grey;
-              display: block;
-              margin: 0 auto;
-              background: #f8f8f8;
+              width: 100% !important;
+              max-width: 280px !important;
+              height: 200px !important; /* Kept consistent */
+             object-fit: contain !important;
+              border-style: solid !important;
+              background: #f8f8f8 !important;
+              display: block !important;
+              margin: 0 !important; /* Remove all margins from individual images */
+              padding: 0 !important; /* Remove all padding from individual images */
+              border-collapse: collapse !important;
+              vertical-align: top !important;
+              font-size: 0 !important;
+              line-height: 0 !important;
             }
             /* Advice Section */
             .advice-section {
@@ -890,8 +902,8 @@ function PropertyDetailPage(props) {
                 padding-top: 8px;
               }
               .page {
-                page-break-after: always;
-                break-after: page;
+                page-break-after: auto; /* Allow natural flow */
+                break-after: auto;
               }
               /* Ensure meters section stays on one page in print */
               .meters-section {
@@ -901,11 +913,34 @@ function PropertyDetailPage(props) {
                 break-inside: avoid;
               }
        .area-section {
-    margin-top: 0; /* Remove margin-top for print */
-    margin-bottom: 15px;
-    padding-top: 20px; /* Consistent top padding for each area section */
+    margin-top: 0 !important; /* Remove margin-top for print */
+    margin-bottom: 0 !important; /* Remove margin-bottom for print */
+    padding-top: 0 !important; /* Remove padding for print */
     page-break-inside: avoid;
   }
+              .area-images-container {
+                display: grid !important;
+                gap: 0px !important;
+                margin-top: 19px !important; /* Add small top margin for print */
+                margin-bottom: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding: 0 !important;
+                border: 0 !important;
+                outline: 0 !important;
+                position: relative !important;
+              }
+              .area-image {
+                margin: 0 !important;
+                padding: 0 !important;
+                display: block !important;
+                border-collapse: collapse !important;
+                vertical-align: top !important;
+                font-size: 0 !important;
+                line-height: 0 !important;
+                float: none !important;
+                clear: none !important;
+              }
               .header {
                 padding: 5px 5px;
                 margin-bottom: 10px; /* Further adjusted for print */
@@ -1037,6 +1072,8 @@ function PropertyDetailPage(props) {
               }
               .area-image {
                 height: 250px;
+                margin: 0 !important;
+                padding: 0 !important;
               }
               .advice-section {
                 margin: 25px 40px; /* Further adjusted for print */
@@ -1222,6 +1259,8 @@ function PropertyDetailPage(props) {
               }
               .area-image {
                 height: 280px;
+                margin: 0 !important;
+                padding: 0 !important;
               }
                 
               .advice-section {
@@ -1440,11 +1479,7 @@ function PropertyDetailPage(props) {
               <div class="advice-text">${propertyData?.advised_tenant_to || "No specific advice for tenant."}</div>
               <hr />
             </div>
-            <div class="advice-card no-break">
-              <div class="advice-title">Advice for Landlord:</div>
-              <div class="advice-text">${propertyData?.asked_landlord_to || "No specific advice for landlord."}</div>
-              <hr />
-            </div>
+        
           </div>
           <div class="important-info no-break" style="margin-top: 30px;">
             <div class="section-title">Important Information</div>
